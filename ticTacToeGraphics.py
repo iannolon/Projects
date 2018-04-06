@@ -2,10 +2,24 @@
 #4/4/18
 #ticTacToeGraphics.py
 
+#import graphics and random integer, needed for the program
 from ggame import *
 from random import randint
 
 '''
+
+These are all the possible square numbers needed for a victory. Top 3 are horizontal, next 3 are vertical, and the last 2 are diagonal.
+
+1,2,3
+4,5,6
+7,8,9
+1,4,7
+2,5,8
+3,6,9
+1,5,9
+3,5,7
+
+#checks to see if a square is empty and returns True or False
 def isEmpty(sqNum):
     if sqNum == 1:
         if data['sq1'] = 0
@@ -37,85 +51,108 @@ def isEmpty(sqNum):
     else:
         return False
 
-
-
-These are all the possible square numbers needed for a victory. Top 3 are horizontal, next 3 are vertical, and the last 2 are diagonal.
-
-1,2,3
-4,5,6
-7,8,9
-1,4,7
-2,5,8
-3,6,9
-1,5,9
-3,5,7
-
-
-
+#checks all possible winning combinations on the board to see if somebody has won the game and returns if you won or lost
 def winner():
     if isEmpty(1) = False and isEmpty(2) = False and isEmpty(3) = False:
-        return True
+        if data['sq1'] = 1 and data['sq2'] = 1 and data['sq3'] = 1:
+            return('You won!')
+        elif data['sq1'] = 2 and data['sq2'] = 2 and data['sq3'] = 2:
+            return('You lost!')
     elif isEmpty(4) = False and isEmpty(5) = False and isEmpty(6) = False:
-        return True
+        if data['sq4'] = 1 and data['sq5'] = 1 and data['sq6'] = 1:
+            return('You won!')
+        elif data['sq4'] = 2 and data['sq5'] = 2 and data['sq6'] = 2:
+            return('You lost!')
     elif isEmpty(7) = False and isEmpty(8) = False and isEmpty(9) = False:
-        return True
+        if data['sq7'] = 1 and data['sq8'] = 1 and data['sq9'] = 1:
+            return('You won!')
+        elif data['sq7'] = 2 and data['sq8'] = 2 and data['sq9'] = 2:
+            return('You lost!')
     elif isEmpty(1) = False and isEmpty(4) = False and isEmpty(7) = False:
-        return True
+        if data['sq1'] = 1 and data['sq4'] = 1 and data['sq7'] = 1:
+            return('You won!')
+        elif data['sq1'] = 2 and data['sq4'] = 2 and data['sq7'] = 2:
+            return('You lost!')
     elif isEmpty(2) = False and isEmpty(5) = False and isEmpty(8) = False:
-        return True
+        if data['sq4'] = 1 and data['sq5'] = 1 and data['sq6'] = 1:
+            return('You won!')
+        elif data['sq2'] = 2 and data['sq5'] = 2 and data['sq8'] = 2:
+            return('You lost!')
     elif isEmpty(3) = False and isEmpty(6) = False and isEmpty(9) = False:
-        return True
+        if data['sq3'] = 1 and data['sq6'] = 1 and data['sq9'] = 1:
+            return('You won!')
+        elif data['sq3'] = 2 and data['sq6'] = 2 and data['sq9'] = 2:
+            return('You lost!')
     elif isEmpty(1) = False and isEmpty(5) = False and isEmpty(9) = False:
-        return True
+        if data['sq1'] = 1 and data['sq5'] = 1 and data['sq9'] = 1:
+            return('You won!')
+        elif data['sq1'] = 2 and data['sq5'] = 2 and data['sq9'] = 2:
+            return('You lost!')
     elif isEmpty(3) = False and isEmpty(5) = False and isEmpty(7) = False:
-        return True
+        if data['sq3'] = 1 and data['sq5'] = 1 and data['sq7'] = 1:
+            return('You won!')
+        elif data['sq3'] = 2 and data['sq5'] = 2 and data['sq7'] = 2:
+            return('You lost!')
     else:
         return False
-        
+    
+#checks to see if the board is full and no more moves are possible
 def fullBoard():
     if isEmpty(1) == False and isEmpty(2) == False and isEmpty(3) == False and isEmpty(4) == False and isEmpty(5) == False and isEmpty(6) == False and isEmpty(7) == False and isEmpty(8) == False and isEmpty(9) == False:
         #return True
     else:
         return False
 
+#code to allow the computer to place O's
 def computerTurn():
     r = randint(1,10)
     if r = 1:
         #if isEmpty(1) = True:
             Sprite(oGraphic,(20,20))
             data['sq1'] = 2
+            return
     elif r = 2:
         #if isEmpty(2) = True:
             Sprite(oGraphic,(220,20))
             data['sq2'] = 2
+            return
     elif r = 3:
         #if isEmpty(3) = True:
             Sprite(oGraphic,(420,20))
             data['sq3'] = 2
+            return
     elif r = 4:
         #if isEmpty(4) = True:
             Sprite(oGraphic,(20,220))
             data['sq4'] = 2
+            return
     elif r = 5:
         #if isEmpty(5) = True:
             Sprite(oGraphic,(220,220))
             data['sq5'] = 2
+            return
     elif r = 6:
         #if isEmpty(6) = True:
             Sprite(oGraphic,(420,220))
             data['sq6'] = 2
+            return
     elif r = 7:
         #if isEmpty(7) = True:
             Sprite(oGraphic,(20,420))
             data['sq7'] = 2
+            return
     elif r = 8:
         #if isEmpty(8) = True:
             Sprite(oGraphic,(220,420))
             data['sq8'] = 2
+            return
     elif r = 9:
         #if isEmpty(9) = True:
             Sprite(oGraphic,(420,420))
             data['sq9'] = 2
+            return
+    else:
+        computerTurn()
     return
   
 '''
@@ -197,6 +234,5 @@ if __name__=='__main__':
     
     App().listenMouseEvent('click',mouseClick)
     App().run()
-    
     
     
