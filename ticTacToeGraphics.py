@@ -18,35 +18,36 @@ These are all the possible square numbers needed for a victory. Top 3 are horizo
 3,6,9
 1,5,9
 3,5,7
+'''
 
 #checks to see if a square is empty and returns True or False
 def isEmpty(sqNum):
     if sqNum == 1:
-        if data['sq1'] = 0
+        if data['sq1'] == 0:
             return True
     elif sqNum == 2:
-        if data['sq2'] = 0
+        if data['sq2'] == 0:
             return True
     elif sqNum == 3:
-        if data['sq3'] = 0
+        if data['sq3'] == 0:
             return True
     elif sqNum == 4:
-        if data['sq4'] = 0
+        if data['sq4'] == 0:
             return True
     elif sqNum == 5:
-        if data['sq5'] = 0
+        if data['sq5'] == 0:
             return True
     elif sqNum == 6:
-        if data['sq6'] = 0
+        if data['sq6'] == 0:
             return True
     elif sqNum == 7:
-        if data['sq7'] = 0
+        if data['sq7'] == 0:
             return True
     elif sqNum == 8:
-        if data['sq8'] = 0
+        if data['sq8'] == 0:
             return True
     elif sqNum == 9:
-        if data['sq9'] = 0
+        if data['sq9'] == 0:
             return True
     else:
         return False
@@ -155,7 +156,7 @@ def computerTurn():
         computerTurn()
     return
   
-'''
+
 def mouseClick(event):
     #determine what square was clicked
     #place an X there if possible
@@ -202,6 +203,7 @@ def mouseClick(event):
 
 if __name__=='__main__':
     
+    #puts variables in a dictionary. If the square is equal to 0, it is empty, if it is 1, then it has an X, and if it is 2, then it has an O. It sets them all to 0 initially because they're all empty.
     data = {}
     data['sq1'] = 0
     data['sq2'] = 0
@@ -213,16 +215,17 @@ if __name__=='__main__':
     data['sq8'] = 0
     data['sq9'] = 0
     
+    #color and outline
     black = Color(0x000000,1)
     blackOutline = LineStyle(1,black)
     
+    #lines for the graph and the X and O graphics are here
     horzLine = RectangleAsset(600,5,blackOutline,black)
     vertLine = RectangleAsset(5,600,blackOutline,black)
-    #ldiagLine = LineAsset(160,160,blackOutline)
     xGraphic = TextAsset('X', fill = black, style = 'bold 125pt Times')
     oGraphic = TextAsset('O', fill = black, style = 'bold 125pt Times')
-    # = LineAsset(0,180,blackOutline)
     
+    #sprites the 3 by 3 graph 
     Sprite(horzLine,(0,0))
     Sprite(horzLine,(0,200))
     Sprite(horzLine,(0,400))
@@ -232,7 +235,9 @@ if __name__=='__main__':
     Sprite(vertLine,(400,0))
     Sprite(vertLine,(600,0))
     
+    #runs the code
     App().listenMouseEvent('click',mouseClick)
     App().run()
+    
     
     
