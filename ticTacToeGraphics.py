@@ -57,44 +57,44 @@ def isEmpty(sqNum):
 def winner():
     if isEmpty(1) == False and isEmpty(2) == False and isEmpty(3) == False:
         if data['sq1'] == 1 and data['sq2'] == 1 and data['sq3'] == 1:
-            return('You won!')
+            data['winner'] = 1
         elif data['sq1'] == 2 and data['sq2'] == 2 and data['sq3'] == 2:
-            return('You lost!')
+            data['winner'] = 2
     elif isEmpty(4) == False and isEmpty(5) == False and isEmpty(6) == False:
         if data['sq4'] == 1 and data['sq5'] == 1 and data['sq6'] == 1:
-            return('You won!')
+            data['winner'] = 1
         elif data['sq4'] == 2 and data['sq5'] == 2 and data['sq6'] == 2:
-            return('You lost!')
+            data['winner'] = 2
     elif isEmpty(7) == False and isEmpty(8) == False and isEmpty(9) == False:
         if data['sq7'] == 1 and data['sq8'] == 1 and data['sq9'] == 1:
-            return('You won!')
+            data['winner'] = 1
         elif data['sq7'] == 2 and data['sq8'] == 2 and data['sq9'] == 2:
-            return('You lost!')
+            data['winner'] = 2
     elif isEmpty(1) == False and isEmpty(4) == False and isEmpty(7) == False:
         if data['sq1'] == 1 and data['sq4'] == 1 and data['sq7'] == 1:
-            return('You won!')
+            data['winner'] = 1
         elif data['sq1'] == 2 and data['sq4'] == 2 and data['sq7'] == 2:
-            return('You lost!')
+            data['winner'] = 2
     elif isEmpty(2) == False and isEmpty(5) == False and isEmpty(8) == False:
         if data['sq4'] == 1 and data['sq5'] == 1 and data['sq6'] == 1:
-            return('You won!')
+            data['winner'] = 1
         elif data['sq2'] == 2 and data['sq5'] == 2 and data['sq8'] == 2:
-            return('You lost!')
+            data['winner'] = 2
     elif isEmpty(3) == False and isEmpty(6) == False and isEmpty(9) == False:
         if data['sq3'] == 1 and data['sq6'] == 1 and data['sq9'] == 1:
-            return('You won!')
+            data['winner'] = 1
         elif data['sq3'] == 2 and data['sq6'] == 2 and data['sq9'] == 2:
-            return('You lost!')
+            data['winner'] = 2
     elif isEmpty(1) == False and isEmpty(5) == False and isEmpty(9) == False:
         if data['sq1'] == 1 and data['sq5'] == 1 and data['sq9'] == 1:
-            return('You won!')
+            data['winner'] = 1
         elif data['sq1'] == 2 and data['sq5'] == 2 and data['sq9'] == 2:
-            return('You lost!')
+            data['winner'] = 2
     elif isEmpty(3) == False and isEmpty(5) == False and isEmpty(7) == False:
         if data['sq3'] == 1 and data['sq5'] == 1 and data['sq7'] == 1:
-            return('You won!')
+            data['winner'] = 1
         elif data['sq3'] == 2 and data['sq5'] == 2 and data['sq7'] == 2:
-            return('You lost!')
+            data['winner'] = 2
     else:
         return False
     
@@ -179,7 +179,13 @@ def mouseClick(event):
     xcl=event.x
     ycl=event.y
     winner()
-    if xcl > 0 and xcl < CELL_SIZE and ycl > 0 and ycl < CELL_SIZE:
+    if data['winner'] == 1:
+        vText = TextAsset('You won!!!', fill = black, style = 'bold 300pt Times')
+        Sprite(vText,(0,0))
+    elif data['winner'] == 2:
+        vText = TextAsset('You lost!!!', fill = black, style = 'bold 300pt Times')
+        Sprite(vText,(0,0))
+    elif xcl > 0 and xcl < CELL_SIZE and ycl > 0 and ycl < CELL_SIZE:
         if isEmpty(1) == True:
             Sprite(xGraphic,(20,20))
             data['sq1'] = 1
@@ -206,7 +212,7 @@ def mouseClick(event):
             computerTurn()
     elif xcl > CELL_SIZE*2 and xcl < CELL_SIZE*3 and ycl > CELL_SIZE and ycl < CELL_SIZE*2:
         if isEmpty(6) == True:
-            Sprite(xGraphic,(CELL_SIZE*2+20,CELL_SIZE+20))
+            Sprite(xGraphic,(CELL_SIZE*2+20,CELL_SIZE+20)) #this square doesn't work, it sprites the X inside of square 3 not square 6.
             data['sq6'] = 1
             computerTurn()
     elif xcl > 0 and xcl < CELL_SIZE and ycl > CELL_SIZE*2 and ycl < CELL_SIZE*3:
@@ -241,6 +247,7 @@ if __name__=='__main__':
     data['sq7'] = 0
     data['sq8'] = 0
     data['sq9'] = 0
+    data['winner'] = 0 #when this variable is 0, there is no winner. When it is equal to 1, the player has won. When it is equal to 2, the computer has won.
     
     #color and outline
     black = Color(0x000000,1)
