@@ -6,10 +6,11 @@
 from ggame import *
 from random import randint
 
+#cell size constant, easily changeable for different sized games
+CELL_SIZE = 175 #works best with 200 or 175
+
 '''
-
 These are all the possible square numbers needed for a victory. Top 3 are horizontal, next 3 are vertical, and the last 2 are diagonal.
-
 1,2,3
 4,5,6
 7,8,9
@@ -18,8 +19,8 @@ These are all the possible square numbers needed for a victory. Top 3 are horizo
 3,6,9
 1,5,9
 3,5,7
-'''
 
+'''
 #checks to see if a square is empty and returns True or False
 def isEmpty(sqNum):
     if sqNum == 1:
@@ -54,45 +55,45 @@ def isEmpty(sqNum):
 
 #checks all possible winning combinations on the board to see if somebody has won the game and returns if you won or lost
 def winner():
-    if isEmpty(1) = False and isEmpty(2) = False and isEmpty(3) = False:
-        if data['sq1'] = 1 and data['sq2'] = 1 and data['sq3'] = 1:
+    if isEmpty(1) == False and isEmpty(2) == False and isEmpty(3) == False:
+        if data['sq1'] == 1 and data['sq2'] == 1 and data['sq3'] == 1:
             return('You won!')
-        elif data['sq1'] = 2 and data['sq2'] = 2 and data['sq3'] = 2:
+        elif data['sq1'] == 2 and data['sq2'] == 2 and data['sq3'] == 2:
             return('You lost!')
-    elif isEmpty(4) = False and isEmpty(5) = False and isEmpty(6) = False:
-        if data['sq4'] = 1 and data['sq5'] = 1 and data['sq6'] = 1:
+    elif isEmpty(4) == False and isEmpty(5) == False and isEmpty(6) == False:
+        if data['sq4'] == 1 and data['sq5'] == 1 and data['sq6'] == 1:
             return('You won!')
-        elif data['sq4'] = 2 and data['sq5'] = 2 and data['sq6'] = 2:
+        elif data['sq4'] == 2 and data['sq5'] == 2 and data['sq6'] == 2:
             return('You lost!')
-    elif isEmpty(7) = False and isEmpty(8) = False and isEmpty(9) = False:
-        if data['sq7'] = 1 and data['sq8'] = 1 and data['sq9'] = 1:
+    elif isEmpty(7) == False and isEmpty(8) == False and isEmpty(9) == False:
+        if data['sq7'] == 1 and data['sq8'] == 1 and data['sq9'] == 1:
             return('You won!')
-        elif data['sq7'] = 2 and data['sq8'] = 2 and data['sq9'] = 2:
+        elif data['sq7'] == 2 and data['sq8'] == 2 and data['sq9'] == 2:
             return('You lost!')
-    elif isEmpty(1) = False and isEmpty(4) = False and isEmpty(7) = False:
-        if data['sq1'] = 1 and data['sq4'] = 1 and data['sq7'] = 1:
+    elif isEmpty(1) == False and isEmpty(4) == False and isEmpty(7) == False:
+        if data['sq1'] == 1 and data['sq4'] == 1 and data['sq7'] == 1:
             return('You won!')
-        elif data['sq1'] = 2 and data['sq4'] = 2 and data['sq7'] = 2:
+        elif data['sq1'] == 2 and data['sq4'] == 2 and data['sq7'] == 2:
             return('You lost!')
-    elif isEmpty(2) = False and isEmpty(5) = False and isEmpty(8) = False:
-        if data['sq4'] = 1 and data['sq5'] = 1 and data['sq6'] = 1:
+    elif isEmpty(2) == False and isEmpty(5) == False and isEmpty(8) == False:
+        if data['sq4'] == 1 and data['sq5'] == 1 and data['sq6'] == 1:
             return('You won!')
-        elif data['sq2'] = 2 and data['sq5'] = 2 and data['sq8'] = 2:
+        elif data['sq2'] == 2 and data['sq5'] == 2 and data['sq8'] == 2:
             return('You lost!')
-    elif isEmpty(3) = False and isEmpty(6) = False and isEmpty(9) = False:
-        if data['sq3'] = 1 and data['sq6'] = 1 and data['sq9'] = 1:
+    elif isEmpty(3) == False and isEmpty(6) == False and isEmpty(9) == False:
+        if data['sq3'] == 1 and data['sq6'] == 1 and data['sq9'] == 1:
             return('You won!')
-        elif data['sq3'] = 2 and data['sq6'] = 2 and data['sq9'] = 2:
+        elif data['sq3'] == 2 and data['sq6'] == 2 and data['sq9'] == 2:
             return('You lost!')
-    elif isEmpty(1) = False and isEmpty(5) = False and isEmpty(9) = False:
-        if data['sq1'] = 1 and data['sq5'] = 1 and data['sq9'] = 1:
+    elif isEmpty(1) == False and isEmpty(5) == False and isEmpty(9) == False:
+        if data['sq1'] == 1 and data['sq5'] == 1 and data['sq9'] == 1:
             return('You won!')
-        elif data['sq1'] = 2 and data['sq5'] = 2 and data['sq9'] = 2:
+        elif data['sq1'] == 2 and data['sq5'] == 2 and data['sq9'] == 2:
             return('You lost!')
-    elif isEmpty(3) = False and isEmpty(5) = False and isEmpty(7) = False:
-        if data['sq3'] = 1 and data['sq5'] = 1 and data['sq7'] = 1:
+    elif isEmpty(3) == False and isEmpty(5) == False and isEmpty(7) == False:
+        if data['sq3'] == 1 and data['sq5'] == 1 and data['sq7'] == 1:
             return('You won!')
-        elif data['sq3'] = 2 and data['sq5'] = 2 and data['sq7'] = 2:
+        elif data['sq3'] == 2 and data['sq5'] == 2 and data['sq7'] == 2:
             return('You lost!')
     else:
         return False
@@ -100,107 +101,133 @@ def winner():
 #checks to see if the board is full and no more moves are possible
 def fullBoard():
     if isEmpty(1) == False and isEmpty(2) == False and isEmpty(3) == False and isEmpty(4) == False and isEmpty(5) == False and isEmpty(6) == False and isEmpty(7) == False and isEmpty(8) == False and isEmpty(9) == False:
-        #return True
+        return True
     else:
         return False
 
 #code to allow the computer to place O's
 def computerTurn():
     r = randint(1,10)
-    if r = 1:
-        #if isEmpty(1) = True:
+    if r == 1:
+        if isEmpty(1) == True:
             Sprite(oGraphic,(20,20))
             data['sq1'] = 2
             return
-    elif r = 2:
-        #if isEmpty(2) = True:
-            Sprite(oGraphic,(220,20))
+        else:
+            computerTurn()
+    elif r == 2:
+        if isEmpty(2) == True:
+            Sprite(oGraphic,(CELL_SIZE+20,20))
             data['sq2'] = 2
             return
-    elif r = 3:
-        #if isEmpty(3) = True:
-            Sprite(oGraphic,(420,20))
+        else:
+            computerTurn()
+    elif r == 3:
+        if isEmpty(3) == True:
+            Sprite(oGraphic,(CELL_SIZE*2+20,20))
             data['sq3'] = 2
             return
-    elif r = 4:
-        #if isEmpty(4) = True:
-            Sprite(oGraphic,(20,220))
+        else:
+            computerTurn()
+    elif r == 4:
+        if isEmpty(4) == True:
+            Sprite(oGraphic,(20,CELL_SIZE+20))
             data['sq4'] = 2
             return
-    elif r = 5:
-        #if isEmpty(5) = True:
-            Sprite(oGraphic,(220,220))
+        else:
+            computerTurn()
+    elif r == 5:
+        if isEmpty(5) == True:
+            Sprite(oGraphic,(CELL_SIZE+20,CELL_SIZE+20))
             data['sq5'] = 2
             return
-    elif r = 6:
-        #if isEmpty(6) = True:
-            Sprite(oGraphic,(420,220))
+        else:
+            computerTurn()
+    elif r == 6:
+        if isEmpty(6) == True:
+            Sprite(oGraphic,(CELL_SIZE*2+20,CELL_SIZE+20))
             data['sq6'] = 2
             return
-    elif r = 7:
-        #if isEmpty(7) = True:
-            Sprite(oGraphic,(20,420))
+        else:
+            computerTurn()
+    elif r == 7:
+        if isEmpty(7) == True:
+            Sprite(oGraphic,(20,CELL_SIZE*2+20))
             data['sq7'] = 2
             return
-    elif r = 8:
-        #if isEmpty(8) = True:
-            Sprite(oGraphic,(220,420))
+        else:
+            computerTurn()
+    elif r == 8:
+        if isEmpty(8) == True:
+            Sprite(oGraphic,(CELL_SIZE+20,CELL_SIZE*2+20))
             data['sq8'] = 2
             return
-    elif r = 9:
-        #if isEmpty(9) = True:
-            Sprite(oGraphic,(420,420))
+        else:
+            computerTurn()
+    elif r == 9:
+        if isEmpty(9) == True:
+            Sprite(oGraphic,(CELL_SIZE*2+20,CELL_SIZE*2+20))
             data['sq9'] = 2
             return
-    else:
-        computerTurn()
+        else:
+            computerTurn()
     return
-  
+
 
 def mouseClick(event):
-    #determine what square was clicked
-    #place an X there if possible
+    #determine what square was clicked and place an X there if possible
     xcl=event.x
     ycl=event.y
-    if xcl > 0 and xcl < 200 and ycl > 0 and ycl < 200:
-        #if isEmpty(1) = True:
+    winner()
+    if xcl > 0 and xcl < CELL_SIZE and ycl > 0 and ycl < CELL_SIZE:
+        if isEmpty(1) == True:
             Sprite(xGraphic,(20,20))
             data['sq1'] = 1
-    if xcl > 200 and xcl < 400 and ycl > 0 and ycl < 200:
-        #if isEmpty(2) = True:
-            Sprite(xGraphic,(220,20))
+            computerTurn()
+    elif xcl > CELL_SIZE and xcl < CELL_SIZE*2 and ycl > 0 and ycl < CELL_SIZE:
+        if isEmpty(2) == True:
+            Sprite(xGraphic,(CELL_SIZE+20,20))
             data['sq2'] = 1
-    if xcl > 400 and xcl < 600 and ycl > 0 and ycl < 200:
-        #if isEmpty(3) = True:
-            Sprite(xGraphic,(420,20))
+            computerTurn()
+    elif xcl > CELL_SIZE*2 and xcl < CELL_SIZE*3 and ycl > 0 and ycl < CELL_SIZE*2:
+        if isEmpty(3) == True:
+            Sprite(xGraphic,(CELL_SIZE*2+20,20))
             data['sq3'] = 1
-    if xcl > 0 and xcl < 200 and ycl > 200 and ycl < 400:
-        #if isEmpty(4) = True:
-            Sprite(xGraphic,(20,220))
+            computerTurn()
+    elif xcl > 0 and xcl < CELL_SIZE and ycl > CELL_SIZE and ycl < CELL_SIZE*2:
+        if isEmpty(4) == True:
+            Sprite(xGraphic,(20,CELL_SIZE+20))
             data['sq4'] = 1
-    if xcl > 200 and xcl < 400 and ycl > 200 and ycl < 400:
-        #if isEmpty(5) = True:
-            Sprite(xGraphic,(220,220))
+            computerTurn()
+    elif xcl > CELL_SIZE and xcl < CELL_SIZE*2 and ycl > CELL_SIZE and ycl < CELL_SIZE*2:
+        if isEmpty(5) == True:
+            Sprite(xGraphic,(CELL_SIZE+20,CELL_SIZE+20))
             data['sq5'] = 1
-    if xcl > 400 and xcl < 600 and ycl > 200 and ycl < 400:
-        #if isEmpty(6) = True:
-            Sprite(xGraphic,(420,220))
+            computerTurn()
+    elif xcl > CELL_SIZE*2 and xcl < CELL_SIZE*3 and ycl > CELL_SIZE and ycl < CELL_SIZE*2:
+        if isEmpty(6) == True:
+            Sprite(xGraphic,(CELL_SIZE*2+20,CELL_SIZE+20))
             data['sq6'] = 1
-    if xcl > 0 and xcl < 200 and ycl > 400 and ycl < 600:
-        #if isEmpty(7) = True:
-            Sprite(xGraphic,(20,420))
+            computerTurn()
+    elif xcl > 0 and xcl < CELL_SIZE and ycl > CELL_SIZE*2 and ycl < CELL_SIZE*3:
+        if isEmpty(7) == True:
+            Sprite(xGraphic,(20,CELL_SIZE*2+20))
             data['sq7'] = 1
-    if xcl > 200 and xcl < 400 and ycl > 400 and ycl < 600:
-        #if isEmpty(8) = True:
-            Sprite(xGraphic,(220,420))
+            computerTurn()
+    elif xcl > CELL_SIZE and xcl < CELL_SIZE*2 and ycl > CELL_SIZE*2 and ycl < CELL_SIZE*3:
+        if isEmpty(8) == True:
+            Sprite(xGraphic,(CELL_SIZE+20,CELL_SIZE*2+20))
             data['sq8'] = 1
-    if xcl > 400 and xcl < 600 and ycl > 400 and ycl < 600:
-        #if isEmpty(9) = True:
-            Sprite(xGraphic,(420,420))
+            computerTurn()
+    elif xcl > CELL_SIZE*2 and xcl < CELL_SIZE*3 and ycl > CELL_SIZE*2 and ycl < CELL_SIZE*3:
+        if isEmpty(9) == True:
+            Sprite(xGraphic,(CELL_SIZE*2+20,CELL_SIZE*2+20))
             data['sq9'] = 1
+            computerTurn()
     return
 
 
+#main code
 if __name__=='__main__':
     
     #puts variables in a dictionary. If the square is equal to 0, it is empty, if it is 1, then it has an X, and if it is 2, then it has an O. It sets them all to 0 initially because they're all empty.
@@ -220,24 +247,24 @@ if __name__=='__main__':
     blackOutline = LineStyle(1,black)
     
     #lines for the graph and the X and O graphics are here
-    horzLine = RectangleAsset(600,5,blackOutline,black)
-    vertLine = RectangleAsset(5,600,blackOutline,black)
+    horzLine = RectangleAsset(CELL_SIZE*3,CELL_SIZE/40,blackOutline,black)
+    vertLine = RectangleAsset(CELL_SIZE/40,CELL_SIZE*3,blackOutline,black)
+    fontSize = CELL_SIZE/1.6
     xGraphic = TextAsset('X', fill = black, style = 'bold 125pt Times')
     oGraphic = TextAsset('O', fill = black, style = 'bold 125pt Times')
     
     #sprites the 3 by 3 graph 
     Sprite(horzLine,(0,0))
-    Sprite(horzLine,(0,200))
-    Sprite(horzLine,(0,400))
-    Sprite(horzLine,(0,600))
+    Sprite(horzLine,(0,CELL_SIZE))
+    Sprite(horzLine,(0,CELL_SIZE*2))
+    Sprite(horzLine,(0,CELL_SIZE*3))
     Sprite(vertLine,(0,0))
-    Sprite(vertLine,(200,0))
-    Sprite(vertLine,(400,0))
-    Sprite(vertLine,(600,0))
+    Sprite(vertLine,(CELL_SIZE,0))
+    Sprite(vertLine,(CELL_SIZE*2,0))
+    Sprite(vertLine,(CELL_SIZE*3,0))
     
     #runs the code
     App().listenMouseEvent('click',mouseClick)
     App().run()
     
-    
-    
+#add cell size constant so I can change cell size easily
