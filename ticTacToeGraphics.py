@@ -19,7 +19,6 @@ These are all the possible square numbers needed for a victory. Top 3 are horizo
 3,6,9
 1,5,9
 3,5,7
-
 '''
 #checks to see if a square is empty and returns True or False
 def isEmpty(sqNum):
@@ -56,45 +55,29 @@ def isEmpty(sqNum):
 #checks all possible winning combinations on the board to see if somebody has won the game and returns if you won or lost
 def winner():
     if isEmpty(1) == False and isEmpty(2) == False and isEmpty(3) == False:
-        if data['sq1'] == 1 and data['sq2'] == 1 and data['sq3'] == 1:
-            data['winner'] = 1
-        elif data['sq1'] == 2 and data['sq2'] == 2 and data['sq3'] == 2:
-            data['winner'] = 2
+        if data['sq1'] == data['sq2'] and data['sq2'] == data['sq3']:
+            return True
     elif isEmpty(4) == False and isEmpty(5) == False and isEmpty(6) == False:
-        if data['sq4'] == 1 and data['sq5'] == 1 and data['sq6'] == 1:
-            data['winner'] = 1
-        elif data['sq4'] == 2 and data['sq5'] == 2 and data['sq6'] == 2:
-            data['winner'] = 2
+        if data['sq4'] == data['sq5'] and data['sq5'] == data['sq6']:
+            return True
     elif isEmpty(7) == False and isEmpty(8) == False and isEmpty(9) == False:
-        if data['sq7'] == 1 and data['sq8'] == 1 and data['sq9'] == 1:
-            data['winner'] = 1
-        elif data['sq7'] == 2 and data['sq8'] == 2 and data['sq9'] == 2:
-            data['winner'] = 2
+        if data['sq7'] == data['sq8'] and data['sq8'] == data['sq9']:
+            return True
     elif isEmpty(1) == False and isEmpty(4) == False and isEmpty(7) == False:
-        if data['sq1'] == 1 and data['sq4'] == 1 and data['sq7'] == 1:
-            data['winner'] = 1
-        elif data['sq1'] == 2 and data['sq4'] == 2 and data['sq7'] == 2:
-            data['winner'] = 2
+        if data['sq1'] == data['sq4'] and data['sq4'] == data['sq7']:
+            return True
     elif isEmpty(2) == False and isEmpty(5) == False and isEmpty(8) == False:
-        if data['sq4'] == 1 and data['sq5'] == 1 and data['sq6'] == 1:
-            data['winner'] = 1
-        elif data['sq2'] == 2 and data['sq5'] == 2 and data['sq8'] == 2:
-            data['winner'] = 2
+        if data['sq2'] == data['sq5'] and data['sq5'] == data['sq8']:
+            return True
     elif isEmpty(3) == False and isEmpty(6) == False and isEmpty(9) == False:
-        if data['sq3'] == 1 and data['sq6'] == 1 and data['sq9'] == 1:
-            data['winner'] = 1
-        elif data['sq3'] == 2 and data['sq6'] == 2 and data['sq9'] == 2:
-            data['winner'] = 2
+        if data['sq3'] == data['sq6'] and data['sq6'] == data['sq9']:
+            return True
     elif isEmpty(1) == False and isEmpty(5) == False and isEmpty(9) == False:
-        if data['sq1'] == 1 and data['sq5'] == 1 and data['sq9'] == 1:
-            data['winner'] = 1
-        elif data['sq1'] == 2 and data['sq5'] == 2 and data['sq9'] == 2:
-            data['winner'] = 2
+        if data['sq1'] == data['sq5'] and data['sq5'] == data['sq9']:
+            return True
     elif isEmpty(3) == False and isEmpty(5) == False and isEmpty(7) == False:
-        if data['sq3'] == 1 and data['sq5'] == 1 and data['sq7'] == 1:
-            data['winner'] = 1
-        elif data['sq3'] == 2 and data['sq5'] == 2 and data['sq7'] == 2:
-            data['winner'] = 2
+        if data['sq3'] == data['sq5'] and data['sq5'] == data['sq7']:
+            return True
     else:
         return False
     
@@ -107,7 +90,7 @@ def fullBoard():
 
 #code to allow the computer to place O's
 def computerTurn():
-    r = randint(1,10)
+    r = randint(1,9)
     if r == 1:
         if isEmpty(1) == True:
             Sprite(oGraphic,(20,20))
@@ -179,11 +162,8 @@ def mouseClick(event):
     xcl=event.x
     ycl=event.y
     winner()
-    if data['winner'] == 1:
-        vText = TextAsset('You won!!!', fill = black, style = 'bold 300pt Times')
-        Sprite(vText,(0,0))
-    elif data['winner'] == 2:
-        vText = TextAsset('You lost!!!', fill = black, style = 'bold 300pt Times')
+    if winner() == True:
+        vText = TextAsset('Winner!!!', fill = black, style = 'bold 300pt Times')
         Sprite(vText,(0,0))
     elif xcl > 0 and xcl < CELL_SIZE and ycl > 0 and ycl < CELL_SIZE:
         if isEmpty(1) == True:
@@ -195,7 +175,7 @@ def mouseClick(event):
             Sprite(xGraphic,(CELL_SIZE+20,20))
             data['sq2'] = 1
             computerTurn()
-    elif xcl > CELL_SIZE*2 and xcl < CELL_SIZE*3 and ycl > 0 and ycl < CELL_SIZE*2:
+    elif xcl > CELL_SIZE*2 and xcl < CELL_SIZE*3 and ycl > 0 and ycl < CELL_SIZE:
         if isEmpty(3) == True:
             Sprite(xGraphic,(CELL_SIZE*2+20,20))
             data['sq3'] = 1
@@ -212,7 +192,7 @@ def mouseClick(event):
             computerTurn()
     elif xcl > CELL_SIZE*2 and xcl < CELL_SIZE*3 and ycl > CELL_SIZE and ycl < CELL_SIZE*2:
         if isEmpty(6) == True:
-            Sprite(xGraphic,(CELL_SIZE*2+20,CELL_SIZE+20)) #this square doesn't work, it sprites the X inside of square 3 not square 6.
+            Sprite(xGraphic,(CELL_SIZE*2+20,CELL_SIZE*+20)) #this square doesn't work, it sprites the X inside of square 3 not square 6.
             data['sq6'] = 1
             computerTurn()
     elif xcl > 0 and xcl < CELL_SIZE and ycl > CELL_SIZE*2 and ycl < CELL_SIZE*3:
@@ -274,4 +254,3 @@ if __name__=='__main__':
     App().listenMouseEvent('click',mouseClick)
     App().run()
     
-#add cell size constant so I can change cell size easily
