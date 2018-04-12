@@ -54,36 +54,72 @@ def isEmpty(sqNum):
 #checks all possible winning combinations on the board to see if somebody has won the game and returns if you won or lost
 def winner():
     if isEmpty(1) == False and isEmpty(2) == False and isEmpty(3) == False:
-        if data['sq1'] == data['sq2'] and data['sq2'] == data['sq3']:
+        if data['sq1'] == data['sq2'] and data['sq2'] == data['sq3'] and data['sq3'] == 1:
             Sprite(vText,(0,0))
             return True
     elif isEmpty(4) == False and isEmpty(5) == False and isEmpty(6) == False:
-        if data['sq4'] == data['sq5'] and data['sq5'] == data['sq6']:
+        if data['sq4'] == data['sq5'] and data['sq5'] == data['sq6'] and data['sq6'] == 1:
             Sprite(vText,(0,0))
             return True
     elif isEmpty(7) == False and isEmpty(8) == False and isEmpty(9) == False:
-        if data['sq7'] == data['sq8'] and data['sq8'] == data['sq9']:
+        if data['sq7'] == data['sq8'] and data['sq8'] == data['sq9'] and data['sq9'] == 1:
             Sprite(vText,(0,0))
             return True
     elif isEmpty(1) == False and isEmpty(4) == False and isEmpty(7) == False:
-        if data['sq1'] == data['sq4'] and data['sq4'] == data['sq7']:
+        if data['sq1'] == data['sq4'] and data['sq4'] == data['sq7'] and data['sq7'] == 1:
             Sprite(vText,(0,0))
             return True
     elif isEmpty(2) == False and isEmpty(5) == False and isEmpty(8) == False:
-        if data['sq2'] == data['sq5'] and data['sq5'] == data['sq8']:
+        if data['sq2'] == data['sq5'] and data['sq5'] == data['sq8'] and data['sq8'] == 1:
             Sprite(vText,(0,0))
             return True
     elif isEmpty(3) == False and isEmpty(6) == False and isEmpty(9) == False:
-        if data['sq3'] == data['sq6'] and data['sq6'] == data['sq9']:
+        if data['sq3'] == data['sq6'] and data['sq6'] == data['sq9'] and data['sq9'] == 1:
             Sprite(vText,(0,0))
             return True
     elif isEmpty(1) == False and isEmpty(5) == False and isEmpty(9) == False:
-        if data['sq1'] == data['sq5'] and data['sq5'] == data['sq9']:
+        if data['sq1'] == data['sq5'] and data['sq5'] == data['sq9'] and data['sq9'] == 1:
             Sprite(vText,(0,0))
             return True
     elif isEmpty(3) == False and isEmpty(5) == False and isEmpty(7) == False:
-        if data['sq3'] == data['sq5'] and data['sq5'] == data['sq7']:
+        if data['sq3'] == data['sq5'] and data['sq5'] == data['sq7'] and data['sq7'] == 1:
             Sprite(vText,(0,0))
+            return True
+    else:
+        return False
+        
+def loser():
+    if isEmpty(1) == False and isEmpty(2) == False and isEmpty(3) == False:
+        if data['sq1'] == data['sq2'] and data['sq2'] == data['sq3'] and data['sq3'] == 2:
+            Sprite(lText,(0,0))
+            return True
+    elif isEmpty(4) == False and isEmpty(5) == False and isEmpty(6) == False:
+        if data['sq4'] == data['sq5'] and data['sq5'] == data['sq6'] and data['sq6'] == 2:
+            Sprite(lText,(0,0))
+            return True
+    elif isEmpty(7) == False and isEmpty(8) == False and isEmpty(9) == False:
+        if data['sq7'] == data['sq8'] and data['sq8'] == data['sq9'] and data['sq9'] == 2:
+            Sprite(lText,(0,0))
+            return True
+    elif isEmpty(1) == False and isEmpty(4) == False and isEmpty(7) == False:
+        if data['sq1'] == data['sq4'] and data['sq4'] == data['sq7'] and data['sq7'] == 2:
+            Sprite(lText,(0,0))
+            return True
+    elif isEmpty(2) == False and isEmpty(5) == False and isEmpty(8) == False:
+        if data['sq2'] == data['sq5'] and data['sq5'] == data['sq8'] and data['sq8'] == 2:
+            Sprite(lText,(0,0))
+            return True
+    elif isEmpty(3) == False and isEmpty(6) == False and isEmpty(9) == False:
+        if data['sq3'] == data['sq6'] and data['sq6'] == data['sq9'] and data['sq9'] == 2:
+            Sprite(lText,(0,0))
+            return True
+    elif isEmpty(1) == False and isEmpty(5) == False and isEmpty(9) == False:
+        if data['sq1'] == data['sq5'] and data['sq5'] == data['sq9'] and data['sq9'] == 2:
+            Sprite(lText,(0,0))
+            return True
+    elif isEmpty(3) == False and isEmpty(5) == False and isEmpty(7) == False:
+        if data['sq3'] == data['sq5'] and data['sq5'] == data['sq7'] and data['sq7'] == 2:
+            Sprite(lText,(0,0))
             return True
     else:
         return False
@@ -355,13 +391,14 @@ if __name__=='__main__':
     red = Color(0xFF0000,1)
     blackOutline = LineStyle(1,black)
     
-    #lines for the graph and the X and O graphics are here
+    #lines for the graph and the X and O graphics are here, along with winner and loser text
     horzLine = RectangleAsset(CELL_SIZE*3,CELL_SIZE/40,blackOutline,black)
     vertLine = RectangleAsset(CELL_SIZE/40,CELL_SIZE*3,blackOutline,black)
     fontSize = CELL_SIZE/1.6
     xGraphic = TextAsset('X', fill = black, style = 'bold 125pt Times')
     oGraphic = TextAsset('O', fill = black, style = 'bold 125pt Times')
-    vText = TextAsset('Winner!!!', fill = red, style = 'bold 200pt Times')
+    vText = TextAsset('You win!!!', fill = red, style = 'bold 200pt Times')
+    lText = TextAsset('You lose!!!', fill = red, style = 'bold 200pt Times')
     
     #sprites the 3 by 3 graph 
     Sprite(horzLine,(0,0))
