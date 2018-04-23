@@ -135,6 +135,8 @@ def computerTurn():
     #win dialogue - if the computer has 2 in a row and a possible winning move, the computer will put its O in the winning spot.
     # put parentheses around the data bc of the ors and ands
     '''
+    '''
+    #remove three apostrophes above to use the smart computer code
     if (data['sq2'] == 2 and data['sq3'] == 2) or (data['sq4'] == 2 and data['sq7'] == 2) or (data['sq5'] == 2 and data['sq9'] == 2):
         if isEmpty(1) == True:
             Sprite(oGraphic,(20,20))
@@ -227,6 +229,8 @@ def computerTurn():
             data['sq9'] = 2
             return
     '''
+    #remove three apostrophes above to end the block of code about a smarter computer
+    '''
     create a fork and block a fork dialogue - forks are where you open up two or more ways to win so the opponent can only block one of them and you win the next turn.
     All possible forks are here:
     1,7,9
@@ -268,73 +272,6 @@ def computerTurn():
     #create fork dialogue to be put here
     '''
     #if none of the above are possible, the computer will play in the middle as it is the most strategically beneficial spot to the computer.
-    if isEmpty(5) == True:
-        Sprite(oGraphic,(CELL_SIZE+20,CELL_SIZE+20))
-        data['sq5'] = 2
-        return
-    else:
-        computerTurn()
-    #if the middle is taken, the computer will then play in a random corner.
-    r = randint(1,4) 
-    if r == 1:
-        if isEmpty(1) == True:
-            Sprite(oGraphic,(20,20))
-            data['sq1'] = 2
-            return
-        else:
-            computerTurn()
-    elif r == 2:
-        if isEmpty(3) == True:
-            Sprite(oGraphic,(CELL_SIZE*2+20,20))
-            data['sq3'] = 2
-            return
-        else:
-            computerTurn()
-    elif r == 3:
-        if isEmpty(7) == True:
-            Sprite(oGraphic,(20,CELL_SIZE*2+20))
-            data['sq7'] = 2
-            return
-        else:
-            computerTurn()
-    elif r == 9:
-        if isEmpty(9) == True:
-            Sprite(oGraphic,(CELL_SIZE*2+20,CELL_SIZE*2+20))
-            data['sq9'] = 2
-            return
-        else:
-            computerTurn()
-    #lastly, if the computer has no other moves, it will play its piece on a side. 
-    #As this is the worst move for the computer to make, it is put last so that it is only achieved if there are no other possible moves that are better.
-    r = randint(1,4)
-    if r == 1:
-        if isEmpty(2) == True:
-            Sprite(oGraphic,(CELL_SIZE+20,20))
-            data['sq2'] = 2
-            return
-        else:
-            computerTurn()
-    elif r == 2:
-        if isEmpty(4) == True:
-            Sprite(oGraphic,(20,CELL_SIZE+20))
-            data['sq4'] = 2
-            return
-        else:
-            computerTurn()
-    elif r == 3:
-        if isEmpty(6) == True:
-            Sprite(oGraphic,(CELL_SIZE*2+20,CELL_SIZE+20))
-            data['sq6'] = 2
-            return
-        else:
-            computerTurn()        
-    elif r == 4:
-        if isEmpty(8) == True:
-            Sprite(oGraphic,(CELL_SIZE+20,CELL_SIZE*2+20))
-            data['sq8'] = 2
-            return
-        else:
-            computerTurn()
     r = randint(1,9)
     if r == 1:
         if isEmpty(1) == True:
@@ -417,54 +354,72 @@ def mouseClick(event):
             Sprite(xGraphic,(20,20))
             data['sq1'] = 1
             winner()
+            if winner() == True:
+                Sprite(vText,(0,0))
             computerTurn()
     elif xcl > CELL_SIZE and xcl < CELL_SIZE*2 and ycl > 0 and ycl < CELL_SIZE:
         if isEmpty(2) == True:
             Sprite(xGraphic,(CELL_SIZE+20,20))
             data['sq2'] = 1
             winner()
+            if winner() == True:
+                Sprite(vText,(0,0))
             computerTurn()
     elif xcl > CELL_SIZE*2 and xcl < CELL_SIZE*3 and ycl > 0 and ycl < CELL_SIZE:
         if isEmpty(3) == True:
             Sprite(xGraphic,(CELL_SIZE*2+20,20))
             data['sq3'] = 1
             winner()
+            if winner() == True:
+                Sprite(vText,(0,0))
             computerTurn()
     elif xcl > 0 and xcl < CELL_SIZE and ycl > CELL_SIZE and ycl < CELL_SIZE*2:
         if isEmpty(4) == True:
             Sprite(xGraphic,(20,CELL_SIZE+20))
             data['sq4'] = 1
             winner()
+            if winner() == True:
+                Sprite(vText,(0,0))
             computerTurn()
     elif xcl > CELL_SIZE and xcl < CELL_SIZE*2 and ycl > CELL_SIZE and ycl < CELL_SIZE*2:
         if isEmpty(5) == True:
             Sprite(xGraphic,(CELL_SIZE+20,CELL_SIZE+20))
             data['sq5'] = 1
             winner()
+            if winner() == True:
+                Sprite(vText,(0,0))
             computerTurn()
     elif xcl > CELL_SIZE*2 and xcl < CELL_SIZE*3 and ycl > CELL_SIZE and ycl < CELL_SIZE*2:
         if isEmpty(6) == True:
             Sprite(xGraphic,(CELL_SIZE*2+20,CELL_SIZE+20))
             data['sq6'] = 1
             winner()
+            if winner() == True:
+                Sprite(vText,(0,0))
             computerTurn()
     elif xcl > 0 and xcl < CELL_SIZE and ycl > CELL_SIZE*2 and ycl < CELL_SIZE*3:
         if isEmpty(7) == True:
             Sprite(xGraphic,(20,CELL_SIZE*2+20))
             data['sq7'] = 1
             winner()
+            if winner() == True:
+                Sprite(vText,(0,0))
             computerTurn()
     elif xcl > CELL_SIZE and xcl < CELL_SIZE*2 and ycl > CELL_SIZE*2 and ycl < CELL_SIZE*3:
         if isEmpty(8) == True:
             Sprite(xGraphic,(CELL_SIZE+20,CELL_SIZE*2+20))
             data['sq8'] = 1
             winner()
+            if winner() == True:
+                Sprite(vText,(0,0))
             computerTurn()
     elif xcl > CELL_SIZE*2 and xcl < CELL_SIZE*3 and ycl > CELL_SIZE*2 and ycl < CELL_SIZE*3:
         if isEmpty(9) == True:
             Sprite(xGraphic,(CELL_SIZE*2+20,CELL_SIZE*2+20))
             data['sq9'] = 1
             winner()
+            if winner() == True:
+                Sprite(vText,(0,0))
             computerTurn()
     return
 
