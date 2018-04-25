@@ -12,11 +12,9 @@ for green in range(0,N+1):
     if red == 0:
         print('D for this probability = ',W)
         D = W #If there are no reds, then you will always win the game. This means that D should equal W.
-        total = total + D
         print(' ')
     else:
         print('D for this probability = ',(green*W)/(green+red))
         D = (green*W)/(red)
-        total = total + D
         print(' ')
-print('D for the whole set= ',(total/(N+1)))
+print('D for the whole set= ',(W/2))
