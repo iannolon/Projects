@@ -1,0 +1,51 @@
+#Strategy 3
+
+N = 10
+W = 8
+print('D for the whole set= ',(W/2))
+print(' ')
+D = (W/2)
+for red in range(0,N+1):
+    print('There are ',red,' red marbles')
+    green = (N-red)
+    print('There are ',green,' green marbles')
+    total = 0
+    if green != 0:
+        D = (red*W)/(red+green)
+        print('D for this scenario = ',D)
+        pRed = (red/N)**2
+        P = (W*pRed)*2 - D
+        print('P for this scenario = ',P)
+        print(' ')
+        total = total + P
+    else:
+        print('D for this probability = ',W)
+        D = W #If there are no greens, then you will always win the game. This means that D should equal W.
+        P = (W*pRed) - W #*2 after (W*pRed)
+        print('P for this scenario = ',P)
+        print(' ')
+        total = total + P
+
+        
+for green in range(0,N+1):
+    print('There are ',green,' green marbles')
+    red = (N-green)
+    print('There are ',red,' red marbles')
+    total2 = 0
+    if red != 0:
+        D = (green*W)/(red+green)
+        print('D for this scenario = ',D)
+        pGreen = (green/N)**2
+        P = (W*pGreen)*2 - D
+        print('P for this scenario = ',P)
+        print(' ')
+        total2 += P
+    else:
+        print('D for this probability = ',W)
+        D = W #If there are no reds, then you will always win the game. This means that D should equal W.
+        P2 = (W*pGreen) - W #*2 after (W*pGreen)
+        print('P for this scenario = ',P)
+        print(' ')
+        total2 += P
+print('Average P is ',((total+total2)/N))
+        
