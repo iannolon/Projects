@@ -14,6 +14,6 @@ for red in range(0,N+1):
         print(' ')
     else:
         print('D for this probability = ',(red*W)/(red+green))
-        D = (red*W)/(green)
+        D = (red*W)/(red+green)
         print(' ')
 print('D for the whole set= ',(W/2))
