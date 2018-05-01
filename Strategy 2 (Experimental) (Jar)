@@ -1,0 +1,27 @@
+from random import randint
+N = 10
+W = 8
+
+D = (W/2)
+total = 0
+
+#this is the code for running it multiple times
+for i in range(1,1001):
+    marbles = []
+    r1 = randint(0,N)
+    r2 = randint(0,N-1)
+    #print('There are',r1,'green marbles')
+    #print('There are',(N-r1),'red marbles')
+    for r in range(0,r1):
+        marbles.append('green')
+    for r in range(r1,N):
+        marbles.append('red')
+    #print(marbles)
+    #print('You pick marble #',r2+1)
+    if marbles[r2] == 'green':
+        #print('You win!')
+        total += (W-D)
+    else:
+        #print('You lose!')
+        total -= D
+print(total)
