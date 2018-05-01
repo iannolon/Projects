@@ -1,0 +1,47 @@
+from random import randint
+N = 10
+W = 8
+
+D = (W/2)
+total = 0
+pWin1 = 0
+
+#this is the theoretical part that gives us our values for pWin and P
+for c in range(0,N+1):
+    marbles = []
+    for f in range(0,c):
+        marbles.append('red')
+    for g in range(c,N):
+        marbles.append('green')
+    pRed = marbles.count('red')
+    pGreen = marbles.count('green')
+    pWin1 += (pRed/N)**2
+pWin = 2*(pWin1/(N+1))
+print(pWin)
+P = W*pWin-D
+print(P)
+
+#this is the code for running it multiple times
+for i in range(1,1001):
+    marbles = []
+    r1 = randint(0,N)
+    r2 = randint(0,N-1)
+    r3 = randint(0,N-1)
+    #print('There are',r1,'red marbles')
+    #print('There are',(N-r1),'green marbles')
+    for r in range(0,r1):
+        marbles.append('red')
+    for r in range(r1,N):
+        marbles.append('green')
+    #print(marbles)
+    #print('You pick marble #',r2+1)
+    if marbles[r2] == 'red' and marbles [r3] == 'red':
+        #print('You win!')
+        total += (W-P-D)
+    elif marbles[r2] == 'green' and marbles [r3] == 'green':
+        #print('You win!')
+        total += (W-P-D)
+    else:
+        #print('You lose!')
+        total += -P-D
+print(total)
