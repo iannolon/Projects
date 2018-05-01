@@ -1,0 +1,22 @@
+from random import randint
+N = 10
+W = 8
+
+D = (W/2)
+total = 0
+pWin1 = 0
+
+#this is the theoretical part that gives us our values for pWin and P
+for c in range(0,N+1):
+    marbles = []
+    for f in range(0,c):
+        marbles.append('red')
+    for g in range(c,N):
+        marbles.append('green')
+    pRed = marbles.count('red')
+    pGreen = marbles.count('green')
+    pWin1 += (pRed/N)**2
+pWin = 2*(pWin1/(N+1))
+print(pWin)
+P = W*pWin-D
+print(P)
