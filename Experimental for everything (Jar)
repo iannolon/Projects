@@ -1,14 +1,17 @@
+#Tono Correa and Ian Nolon
+#5/2/2018
+#experimental python for all strategies
+
 from random import randint
 
+#these are the constants that you can change
 W=8                        
 
 N=10  
 
-T=1000                                
+T=1000 #Don't make T too big or it will take a really long time or crash your computer                                
 
 R=0
-
-
 
 Strat1=0
 Strat2=0
@@ -16,16 +19,13 @@ Strat3=0
 Strat4=0
 Strat5=0
 
-
-
 while R<T:
-    
+    #makes random number of red and green
     RED=randint(0,N)		        
     
     GREEN=N-RED
     
-    
-    
+    #the different possibilities to win for Strategy 4
     POSS1=((RED/N)*(RED/N)*(RED/N))			 
     POSS2=((GREEN/N)*(GREEN/N)*(GREEN/N))
     POSS3=((RED/N)*(GREEN/N)*(RED/N)*(RED/N))
@@ -33,8 +33,7 @@ while R<T:
     POSS5=((GREEN/N)*(RED/N)*(GREEN/N)*(GREEN/N))
     POSS6=((GREEN/N)*(RED/N)*(RED/N)*(RED/N))
     
-    
-    
+    #the different possibilities to win for Strategy 5
     poss1=((RED/N)*((RED-1)/(N-1))*(RED/N))
     poss2=((GREEN/N)*((GREEN-1)/(N-1))*(GREEN/N))
     poss3=((RED/N)*(GREEN/(N-1))*((RED-1)/(N-2))*(RED/N))
@@ -42,16 +41,14 @@ while R<T:
     poss5=((GREEN/N)*(RED/(N-1))*((GREEN-1)/(N-2))*(GREEN/N))
     poss6=((GREEN/N)*(RED/(N-1))*((RED-1)/(N-2))*(RED/N))
     
-    
-    
+    #Probabilities to win for each stragegy, 4 and 5 are just adding up the last two sections.
     strat1=RED/N						
     strat2=GREEN/N
     strat3=(RED/N)*(RED/N)+(RED/N)*(RED/N)    
     strat4=POSS1+POSS2+POSS3+POSS4+POSS5+POSS6		   		
     strat5=poss1+poss2+poss3+poss4+poss5+poss6  
     
-    
-    
+    #This adds up all of the individual strategies for each strategy so that they can be averaged later
     Strat1+=strat1         
     Strat2+=strat2            
     Strat3+=strat3                     
@@ -60,14 +57,14 @@ while R<T:
     
     R+=1
     
+#this averages all of the strategies
 Strat1=Strat1/T          
 Strat2=Strat2/T
 Strat3=Strat3/T
 Strat4=Strat4/T
 Strat5=Strat5/T
 
-
-
+#The probabilities of winning are multiplied by W to see how much you will win.
 Dstrat1=W*Strat1                                          
 Dstrat2=W*Strat2                                         
 Dstrat3_Pstrat3=W*Strat3
@@ -75,32 +72,21 @@ Dstrat4_Rstrat4=W*Strat4
 Dstrat4_Sstrat5=W*Strat5
 
 
-
+#Equations for P, R, and S.
 Pstrat3=Dstrat3_Pstrat3-(Dstrat1+Dstrat2)/2                         
 Rstrat4=Dstrat4_Rstrat4-(Dstrat1+Dstrat2)/2                       
 Sstrat5=Dstrat4_Sstrat5-(Dstrat1+Dstrat2)/2      
 
-
-
+#prints out everything so the user knows what the values are.
 print('Probability of winning for S1 = ',Strat1)
-
 print('Probability of winning for S2 = ',Strat2)       
-
 print('Probability of winning for S3 = ',Strat3)
-
 print('Probability of winning for S4 = ',Strat4)
-
 print('Probability of winning for S5 = ',Strat5)
-
+print('N = ',N)
+print('W = ',W)
 print('D value for S1 = ',Dstrat1)
-
 print('D value for S2 = ',Dstrat2)
-
 print('P value for S3 = ',Pstrat3)
-
 print('R value for S4 = ',Rstrat4)
-
 print('S value for S5 = ',Sstrat5)
-
-
-
