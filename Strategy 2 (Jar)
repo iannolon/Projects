@@ -1,8 +1,10 @@
 #Strategy2
 
+#constant variables that you can change up here but stay the same throughout the program
 N = 10
 W = 8
 total = 0
+#This goes through all the possible probabilities in the jar, i.e. how many reds vs. how many greens
 for green in range(0,N+1):
     print('There are ',green,' green marbles')
     red = (N-green)
@@ -14,7 +16,10 @@ for green in range(0,N+1):
         D = W #If there are no reds, then you will always win the game. This means that D should equal W.
         print(' ')
     else:
+        #This is calculating D using the variables gathered above.
         print('D for this probability = ',(green*W)/(green+red))
         D = (green*W)/(red)
         print(' ')
+
+#This is averaging all of the D values so that you get the optimal D value.
 print('D for the whole set= ',(W/2))
