@@ -7,6 +7,7 @@ from ggame import *
 black = Color(0x000000,1)
 tan = Color(0xE3E385,1)
 yellow = Color(0xF6F605,1)
+blue = Color(0x51BBEC,1)
 
 blackOutline = LineStyle(1,black)
 tanOutline = LineStyle(1,tan)
@@ -15,11 +16,13 @@ XLEN = 900 #900 looks nice
 YLEN = XLEN * 4/9 #To make the proportions the same
 
 board = RectangleAsset(XLEN,YLEN,blackOutline,tan)
-goal = RectangleAsset(XLEN/7,YLEN/1.5,blackOutline,yellow)
+store = RectangleAsset(XLEN/7,YLEN/1.5,blackOutline,yellow)
+house = CircleAsset(XLEN/25,blackOutline,blue) 
 
 Sprite(board)
-Sprite(goal,(XLEN/18,YLEN/6))
-Sprite(goal,(XLEN/18+XLEN/1.35,YLEN/6))
+Sprite(store,(XLEN/18,YLEN/6))
+Sprite(store,(XLEN/18+XLEN/1.35,YLEN/6))
+Sprite(house,(XLEN/4.5,YLEN/6))
 App().run()
 
 
