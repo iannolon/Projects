@@ -15,11 +15,11 @@ XLEN = 900 #900 looks nice
 YLEN = XLEN * 4/9 #To make the proportions the same
 
 board = RectangleAsset(XLEN,YLEN,blackOutline,tan)
-goal1 = RectangleAsset(XLEN/7,YLEN/1.5,blackOutline,yellow)
-#goal2 = RectangleAsset(XLEN/9,YLEN/1.5,blackOutline,yellow)
+goal = RectangleAsset(XLEN/7,YLEN/1.5,blackOutline,yellow)
 
 Sprite(board)
-Sprite(goal1,(XLEN/18,YLEN/18))
+Sprite(goal,(XLEN/18,YLEN/6))
+Sprite(goal,(XLEN/18+XLEN/1.35,YLEN/6))
 App().run()
 
 
