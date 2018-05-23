@@ -23,6 +23,9 @@ Sprite(board)
 Sprite(store,(XLEN/18,YLEN/6))
 Sprite(store,(XLEN/18+XLEN/1.35,YLEN/6))
 Sprite(house,(XLEN/4.5,YLEN/6))
+Sprite(house,(XLEN/4.5+XLEN/9,YLEN/6))
+Sprite(house,(XLEN/4.5+XLEN/4.5,YLEN/6))
+Sprite(house,(XLEN/4.5+XLEN/9 + XLEN/4.5,YLEN/6))
 App().run()
 
 
