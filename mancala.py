@@ -3,7 +3,7 @@
 #mancala.py
 
 from ggame import *
-
+'''
 def fillBuckets():
     board = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
     
@@ -14,17 +14,22 @@ def redrawAll():
     
 def drawPieces():
     for stor in board:
+        print(stor)
+
+def movePieces(row,collumn):
+    for i in range(board[row][collumn]):
         
     
-def movePieces(row,collumn):
     
 def gameOver():
     
 def mouseClick(event):
-    
+'''
 
 
 if __name__ == '__main__':
+    
+    matrix = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
 
     black = Color(0x000000,1)
     tan = Color(0xE3E385,1)
@@ -40,18 +45,22 @@ if __name__ == '__main__':
     board = RectangleAsset(XLEN,YLEN,blackOutline,tan)
     store = RectangleAsset(XLEN/7,YLEN/1.5,blackOutline,yellow)
     house = CircleAsset(XLEN/25,blackOutline,blue) 
-    a1 = TextAsset(board[0][0], fill = black, style = 'bold 40pt Times')
-    b1 = TextAsset(board[0][1], fill = black, style = 'bold 40pt Times')
-    c1 = TextAsset(board[0][2], fill = black, style = 'bold 40pt Times')
-    d1 = TextAsset(board[0][3], fill = black, style = 'bold 40pt Times')
-    e1 = TextAsset(board[0][4], fill = black, style = 'bold 40pt Times')
-    f1 = TextAsset(board[0][5], fill = black, style = 'bold 40pt Times')
-    a2 = TextAsset(board[1][0], fill = black, style = 'bold 40pt Times')
-    b2 = TextAsset(board[1][1], fill = black, style = 'bold 40pt Times')
-    c2 = TextAsset(board[1][2], fill = black, style = 'bold 40pt Times')
-    d2 = TextAsset(board[1][3], fill = black, style = 'bold 40pt Times')
-    e2 = TextAsset(board[1][4], fill = black, style = 'bold 40pt Times')
-    f2 = TextAsset(board[1][5], fill = black, style = 'bold 40pt Times')
+    for i in matrix:
+        if int(i) < 5:
+            i = TextAsset(str(matrix[0][i-1]), fill = black, style = 'bold 40pt Times')
+        else:
+            i = TextAsset(str(matrix[1][i-5]), fill = black, style = 'bold 40pt Times')
+    b1 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
+    c1 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
+    d1 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
+    e1 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
+    f1 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
+    a2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
+    b2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
+    c2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
+    d2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
+    e2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
+    f2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
     
     Sprite(board)
     Sprite(store,(XLEN/18,YLEN/6))
@@ -68,7 +77,7 @@ if __name__ == '__main__':
     Sprite(house,(5 * XLEN/10,YLEN/1.75))
     Sprite(house,(6 * XLEN/10,YLEN/1.75))
     Sprite(house,(7 * XLEN/10,YLEN/1.75))
-    Sprite(a1,(2 * XLEN/10 +0.01*XLEN,YLEN/6))
+    #Sprite(1,(2 * XLEN/10 +0.01*XLEN,YLEN/6))
     App().run()
 
 
