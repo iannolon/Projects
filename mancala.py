@@ -45,23 +45,6 @@ if __name__ == '__main__':
     board = RectangleAsset(XLEN,YLEN,blackOutline,tan)
     store = RectangleAsset(XLEN/7,YLEN/1.5,blackOutline,yellow)
     house = CircleAsset(XLEN/25,blackOutline,blue) 
-    for i in matrix:
-        if int(i) < 5:
-            i = TextAsset(str(matrix[0][i-1]), fill = black, style = 'bold 40pt Times')
-        else:
-            i = TextAsset(str(matrix[1][i-5]), fill = black, style = 'bold 40pt Times')
-    b1 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    c1 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    d1 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    e1 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    f1 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    a2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    b2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    c2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    d2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    e2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    f2 = TextAsset(board[0], fill = black, style = 'bold 40pt Times')
-    
     Sprite(board)
     Sprite(store,(XLEN/18,YLEN/6))
     Sprite(store,(XLEN/18+XLEN/1.35,YLEN/6))
@@ -77,6 +60,32 @@ if __name__ == '__main__':
     Sprite(house,(5 * XLEN/10,YLEN/1.75))
     Sprite(house,(6 * XLEN/10,YLEN/1.75))
     Sprite(house,(7 * XLEN/10,YLEN/1.75))
+    q = 0
+    for r in range(0,6):
+        for c in range(0,2):
+            stoNum = TextAsset(str(matrix[c][r-1]), fill = black, style = 'bold 40pt Times')
+            if q < 6:
+                Sprite(stoNum,((2+r)*XLEN/10+XLEN/35,YLEN/6))
+                q += 1
+            else:
+                Sprite(stoNum,((2+r)*XLEN/10+XLEN/35,YLEN/1.75))
+    #else:
+        #i = TextAsset(str(matrix[1][i-5]), fill = black, style = 'bold 40pt Times')
+    '''
+    b1 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    c1 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    d1 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    e1 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    f1 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    a2 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    b2 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    c2 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    d2 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    e2 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    f2 = TextAsset(matrix[0], fill = black, style = 'bold 40pt Times')
+    '''
+    
+
     #Sprite(1,(2 * XLEN/10 +0.01*XLEN,YLEN/6))
     App().run()
 
