@@ -78,6 +78,12 @@ if __name__ == '__main__':
                     Sprite(houNum,((2+r)*XLEN/10+XLEN/50+XLEN*0.005,YLEN/1.75))
                 else:
                     Sprite(houNum,((2+r)*XLEN/10+XLEN/50,YLEN/1.75))
+    for w in range(0,2):
+        stoNum = TextAsset(str(stores[w-1]), fill = black, style = 'bold 80pt Times')
+        if w == 0:
+            Sprite(stoNum,(XLEN/18+XLEN/25,YLEN/3))
+        else:
+            Sprite(stoNum,(XLEN/18+XLEN/1.35+XLEN/25,YLEN/3))
     
     #else:
         #i = TextAsset(str(matrix[1][i-5]), fill = black, style = 'bold 40pt Times')
