@@ -3,13 +3,16 @@
 #mancala.py
 
 from ggame import *
-'''
+
 def fillBuckets():
-    board = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
+    matrix = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
+    stores = [0,0]
     
+'''
 def redrawAll():
     for item in App().spritelist[:]:
         item.destroy()
+    #Then take all the graphics stuff and put it in here
     fillBuckets()
     
 def drawPieces():
@@ -81,7 +84,10 @@ if __name__ == '__main__':
     for w in range(0,2):
         stoNum = TextAsset(str(stores[w-1]), fill = black, style = 'bold 80pt Times')
         if w == 0:
-            Sprite(stoNum,(XLEN/18+XLEN/25,YLEN/3))
+            if stores[0] < 10:
+                Sprite(stoNum,(XLEN/18+XLEN/25,YLEN/3))
+            else:
+                Sprite(stoNum,(XLEN/18+XLEN/50,YLEN/3))
         else:
             Sprite(stoNum,(XLEN/18+XLEN/1.35+XLEN/25,YLEN/3))
     
