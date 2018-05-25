@@ -30,6 +30,7 @@ def mouseClick(event):
 if __name__ == '__main__':
     
     matrix = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
+    stores = [0,0]
 
     black = Color(0x000000,1)
     tan = Color(0xE3E385,1)
@@ -60,15 +61,24 @@ if __name__ == '__main__':
     Sprite(house,(5 * XLEN/10,YLEN/1.75))
     Sprite(house,(6 * XLEN/10,YLEN/1.75))
     Sprite(house,(7 * XLEN/10,YLEN/1.75))
-    q = 0
     for r in range(0,6):
         for c in range(0,2):
-            stoNum = TextAsset(str(matrix[c][r-1]), fill = black, style = 'bold 40pt Times')
-            if q < 6:
-                Sprite(stoNum,((2+r)*XLEN/10+XLEN/35,YLEN/6))
-                q += 1
-            else:
-                Sprite(stoNum,((2+r)*XLEN/10+XLEN/35,YLEN/1.75))
+            houNum = TextAsset(str(matrix[c][r-1]), fill = black, style = 'bold 50pt Times') #the font size does not change when the XLEN constant changes.
+            if c == 0: #sprites first collumn
+                if r == 0:
+                    Sprite(houNum,((2+r)*XLEN/10+XLEN/50+XLEN*0.01,YLEN/6))
+                elif r == 1:
+                    Sprite(houNum,((2+r)*XLEN/10+XLEN/50+XLEN*0.005,YLEN/6))
+                else:
+                    Sprite(houNum,((2+r)*XLEN/10+XLEN/50,YLEN/6))
+            else: #sprites second collumn
+                if r == 0:
+                    Sprite(houNum,((2+r)*XLEN/10+XLEN/50+XLEN*0.01,YLEN/1.75))
+                elif r == 1:
+                    Sprite(houNum,((2+r)*XLEN/10+XLEN/50+XLEN*0.005,YLEN/1.75))
+                else:
+                    Sprite(houNum,((2+r)*XLEN/10+XLEN/50,YLEN/1.75))
+    
     #else:
         #i = TextAsset(str(matrix[1][i-5]), fill = black, style = 'bold 40pt Times')
     '''
