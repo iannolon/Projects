@@ -75,6 +75,7 @@ def redrawAll():
     
 
 def drawPieces():
+    #define the matrix as it is now
     for r in range(0,6):
         for c in range(0,2):
             houNum = TextAsset(str(matrix[c][r-1]), fill = black, style = 'bold 50pt Times') #the font size does not change when the XLEN constant changes.
@@ -105,17 +106,26 @@ def drawPieces():
             else:
                 Sprite(stoNum,(XLEN/18+XLEN/50+XLEN/1.35,YLEN/3))
     
-
 '''
 def movePieces(row,collumn):
-    for i in range(board[row][collumn]):
-        
+    #do i need to add the stores into the main matrix
     
-    
-def gameOver():
-    
-def mouseClick(event):
 '''
+def gameOver():
+    if matrix[0] == [0,0,0,0,0,0]:
+        print('Top player won!')
+        return True
+    elif matrix[1] == [0,0,0,0,0,0]:
+        print('Bottom player won!')
+        return True
+    else:
+        return False
+    
+
+def mouseClick(event):
+    #event.x and event.y
+    '''
+    
 
 
 if __name__ == '__main__':
@@ -123,8 +133,8 @@ if __name__ == '__main__':
     YLEN = XLEN * 7/18 #To make the proportions the same
     fillBuckets()
     redrawAll()
-    matrix = [[4,4,2,4,7,4],[4,4,0,4,2,4]]
-    stores = [0,6]
+    #matrix = [[4,4,2,4,7,4],[4,4,0,4,2,4]]
+    #stores = [0,6]
     drawPieces()
     App().run()
 
