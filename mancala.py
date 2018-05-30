@@ -3,19 +3,19 @@
 #mancala.py
 
 from ggame import *
-#ADD THE DICTIONARY TO YLEN, STORES AND MATRIX
+#ADD THE DICTIONARY TO STORES AND MATRIX
 
 def fillBuckets():
-    matrix = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
-    stores = [0,0]
+    data['matrix'] = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
+    data['stores'] = [0,0]
 
 def redrawAll():
     for item in App().spritelist[:]:
         item.destroy()
     
     #fillBuckets()
-    matrix = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
-    stores = [0,0]
+    data['matrix'] = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
+    data['stores'] = [0,0]
     
     black = Color(0x000000,1)
     tan = Color(0xE3E385,1)
@@ -45,7 +45,7 @@ def redrawAll():
     Sprite(house,(7 * data['XLEN']/10,data['YLEN']/1.75))
     for r in range(0,6):
         for c in range(0,2):
-            houNum = TextAsset(str(matrix[c][r-1]), fill = black, style = 'bold 50pt Times') #the font size does not change when the XLEN constant changes.
+            houNum = TextAsset(str(data['matrix'][c][r-1]), fill = black, style = 'bold 50pt Times') #the font size does not change when the XLEN constant changes.
             if c == 0: #sprites first collumn
                 if r == 0:
                     Sprite(houNum,((2+r)*data['XLEN']/10+data['XLEN']/50+data['XLEN']*0.01,data['YLEN']/6))
@@ -61,14 +61,14 @@ def redrawAll():
                 else:
                     Sprite(houNum,((2+r)*data['XLEN']/10+data['XLEN']/50,data['YLEN']/1.75))
     for w in range(0,2):
-        stoNum = TextAsset(str(stores[w]), fill = black, style = 'bold 80pt Times')
+        stoNum = TextAsset(str(data['stores'][w]), fill = black, style = 'bold 80pt Times')
         if w == 0:
-            if stores[0] < 10:
+            if data['stores'][0] < 10:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/25,data['YLEN']/3))
             else:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/50,data['YLEN']/3))
         else:
-            if stores[1] < 10:
+            if data['stores'][1] < 10:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/25+data['XLEN']/1.35,data['YLEN']/3))
             else:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/50+data['XLEN']/1.35,data['YLEN']/3))
@@ -78,7 +78,7 @@ def drawPieces():
     #define the matrix as it is now
     for r in range(0,6):
         for c in range(0,2):
-            houNum = TextAsset(str(matrix[c][r-1]), fill = black, style = 'bold 50pt Times') #the font size does not change when the XLEN constant changes.
+            houNum = TextAsset(str(data['matrix'][c][r-1]), fill = black, style = 'bold 50pt Times') #the font size does not change when the XLEN constant changes.
             if c == 0: #sprites first collumn
                 if r == 0:
                     Sprite(houNum,((2+r)*data['XLEN']/10+data['XLEN']/50+data['XLEN']*0.01,data['YLEN']/6))
@@ -94,14 +94,14 @@ def drawPieces():
                 else:
                     Sprite(houNum,((2+r)*data['XLEN']/10+data['XLEN']/50,data['YLEN']/1.75))
     for w in range(0,2):
-        stoNum = TextAsset(str(stores[w]), fill = black, style = 'bold 80pt Times')
+        stoNum = TextAsset(str(data['stores'][w]), fill = black, style = 'bold 80pt Times')
         if w == 0:
-            if stores[0] < 10:
+            if data['stores'][0] < 10:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/25,data['YLEN']/3))
             else:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/50,data['YLEN']/3))
         else:
-            if stores[1] < 10:
+            if data['stores'][1] < 10:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/25+data['XLEN']/1.35,data['YLEN']/3))
             else:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/50+data['XLEN']/1.35,data['YLEN']/3))
@@ -112,10 +112,10 @@ def movePieces(row,collumn):
     
 '''
 def gameOver():
-    if matrix[0] == [0,0,0,0,0,0]:
+    if data['matrix'][0] == [0,0,0,0,0,0]:
         print('Top player won!')
         return True
-    elif matrix[1] == [0,0,0,0,0,0]:
+    elif data['matrix'][1] == [0,0,0,0,0,0]:
         print('Bottom player won!')
         return True
     else:
