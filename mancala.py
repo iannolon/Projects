@@ -122,22 +122,46 @@ def gameOver():
         return False
     
 
-#def mouseClick(event):
-    #event.x and event.y
+def mouseClick(event):
     '''
-    2 * XLEN/10 +0.01*XLEN,YLEN/6
-    3 * XLEN/10 +0.005*XLEN,YLEN/6
-    Sprite(house,(4 * XLEN/10,YLEN/6
-    Sprite(house,(5 * XLEN/10,YLEN/6
-    Sprite(house,(6 * XLEN/10,YLEN/6
-    Sprite(house,(7 * XLEN/10,YLEN/6
-    Sprite(house,(2 * XLEN/10 +0.01*XLEN,YLEN/1.75
-    3 * XLEN/10 +0.005*XLEN,YLEN/1.75
-    4 * XLEN/10,YLEN/1.75
-    5 * XLEN/10,YLEN/1.75
-    6 * XLEN/10,YLEN/1.75
-    7 * XLEN/10,YLEN/1.75
+    if event.x > and event.y >
+    2 * data['XLEN']/10 +0.01*data['XLEN'],data['YLEN']/6
+    3 * data['XLEN']/10 +0.005*data['XLEN'],data['YLEN']/6
+    4 * data['XLEN']/10,data['YLEN']/6
+    5 * data['XLEN']/10,data['YLEN']/6
+    6 * data['XLEN']/10,data['YLEN']/6
+    7 * data['XLEN']/10,data['YLEN']/6
+    2 * data['XLEN']/10 +0.01*data['XLEN'],data['YLEN']/1.75
+    3 * data['XLEN']/10 +0.005*data['XLEN'],data['YLEN']/1.75
+    4 * data['XLEN']/10,data['YLEN']/1.75
+    5 * data['XLEN']/10,data['YLEN']/1.75
+    6 * data['XLEN']/10,data['YLEN']/1.75
+    7 * data['XLEN']/10,data['YLEN']/1.75
     '''
+    if event.x > 2 * data['XLEN']/10 +0.01*data['XLEN'] and event.y > data['YLEN']/6 and event.x < 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y < data['YLEN']/3:
+        print('Top row, 1st collumn')
+    elif event.x > 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y > data['YLEN']/6:
+        print('Top row, 2nd collumn')
+    elif event.x > 4 * data['XLEN']/10 and event.y > data['YLEN']/6:
+        print('Top row, 3rd collumn')
+    elif event.x > 5 * data['XLEN']/10 and event.y > data['YLEN']/6:
+        print('Top row, 4th collumn')
+    elif event.x > 6 * data['XLEN']/10 and event.y > data['YLEN']/6:
+        print('Top row, 5th collumn')
+    elif event.x > 7 * data['XLEN']/10 and event.y > data['YLEN']/6:
+        print('Top row, 6th collumn')
+    elif event.x > 2 * data['XLEN']/10 +0.01*data['XLEN'] and event.y > data['YLEN']/1.75:
+        print('Bottom row, 1st collumn')
+    elif event.x > 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y > data['YLEN']/1.75:
+        print('Bottom row, 2nd collumn')
+    elif event.x > 4 * data['XLEN']/10 and event.y > data['YLEN']/1.75:
+        print('Bottom row, 3rd collumn')
+    elif event.x > 5 * data['XLEN']/10 and event.y > data['YLEN']/1.75:
+        print('Bottom row, 4th collumn')
+    elif event.x > 6 * data['XLEN']/10 and event.y > data['YLEN']/1.75:
+        print('Bottom row, 5th collumn')
+    elif event.x > 7 * data['XLEN']/10 and event.y > data['YLEN']/1.75:
+        print('Bottom row, 6th collumn')
 
 
 if __name__ == '__main__':
