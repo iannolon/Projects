@@ -28,9 +28,9 @@ def redrawAll():
     store = RectangleAsset(data['XLEN']/7,data['YLEN']/1.5,blackOutline,yellow)
     house = CircleAsset(data['XLEN']/25,blackOutline,blue) 
     Sprite(board)
-    Sprite(store,(data['XLEN']/18,data['YLEN']/6))
+    Sprite(store,(data['XLEN']/18,data['YLEN']/6)) #a store is one of the two long yellow things on the sides of the board
     Sprite(store,(data['XLEN']/18+data['XLEN']/1.35,data['YLEN']/6))
-    Sprite(house,(2 * data['XLEN']/10 +0.01*data['XLEN'],data['YLEN']/6))
+    Sprite(house,(2 * data['XLEN']/10 +0.01*data['XLEN'],data['YLEN']/6)) #a house is one of the blue circle things in the middle of the board
     Sprite(house,(3 * data['XLEN']/10 +0.005*data['XLEN'],data['YLEN']/6))
     Sprite(house,(4 * data['XLEN']/10,data['YLEN']/6))
     Sprite(house,(5 * data['XLEN']/10,data['YLEN']/6))
