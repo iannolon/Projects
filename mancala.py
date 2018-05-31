@@ -3,7 +3,6 @@
 #mancala.py
 
 from ggame import *
-#ADD THE DICTIONARY TO STORES AND MATRIX
 
 def fillBuckets():
     data['matrix'] = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
@@ -75,7 +74,35 @@ def redrawAll():
     
 
 def drawPieces():
-    #define the matrix as it is now
+    for item in App().spritelist[:]:
+        item.destroy()
+    
+    black = Color(0x000000,1)
+    tan = Color(0xE3E385,1)
+    yellow = Color(0xF6F605,1)
+    blue = Color(0x51BBEC,1)
+    
+    blackOutline = LineStyle(1,black)
+    tanOutline = LineStyle(1,tan)
+    
+    board = RectangleAsset(data['XLEN'],data['YLEN'],blackOutline,tan)
+    store = RectangleAsset(data['XLEN']/7,data['YLEN']/1.5,blackOutline,yellow)
+    house = CircleAsset(data['XLEN']/25,blackOutline,blue) 
+    Sprite(board)
+    Sprite(store,(data['XLEN']/18,data['YLEN']/6))
+    Sprite(store,(data['XLEN']/18+data['XLEN']/1.35,data['YLEN']/6))
+    Sprite(house,(2 * data['XLEN']/10 +0.01*data['XLEN'],data['YLEN']/6))
+    Sprite(house,(3 * data['XLEN']/10 +0.005*data['XLEN'],data['YLEN']/6))
+    Sprite(house,(4 * data['XLEN']/10,data['YLEN']/6))
+    Sprite(house,(5 * data['XLEN']/10,data['YLEN']/6))
+    Sprite(house,(6 * data['XLEN']/10,data['YLEN']/6))
+    Sprite(house,(7 * data['XLEN']/10,data['YLEN']/6))
+    Sprite(house,(2 * data['XLEN']/10 +0.01*data['XLEN'],data['YLEN']/1.75))
+    Sprite(house,(3 * data['XLEN']/10 +0.005*data['XLEN'],data['YLEN']/1.75))
+    Sprite(house,(4 * data['XLEN']/10,data['YLEN']/1.75))
+    Sprite(house,(5 * data['XLEN']/10,data['YLEN']/1.75))
+    Sprite(house,(6 * data['XLEN']/10,data['YLEN']/1.75))
+    Sprite(house,(7 * data['XLEN']/10,data['YLEN']/1.75))
     for r in range(0,6):
         for c in range(0,2):
             houNum = TextAsset(str(data['matrix'][c][r-1]), fill = black, style = 'bold 50pt Times') #the font size does not change when the XLEN constant changes.
@@ -140,27 +167,27 @@ def mouseClick(event):
     '''
     if event.x > 2 * data['XLEN']/10 +0.01*data['XLEN'] and event.y > data['YLEN']/6 and event.x < 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y < data['YLEN']/3:
         print('Top row, 1st collumn')
-    elif event.x > 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y > data['YLEN']/6:
+    elif event.x > 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y > data['YLEN']/6 and event.x < 4 * data['XLEN']/10 and event.y < data['YLEN']/3:
         print('Top row, 2nd collumn')
-    elif event.x > 4 * data['XLEN']/10 and event.y > data['YLEN']/6:
+    elif event.x > 4 * data['XLEN']/10 and event.y > data['YLEN']/6 and event.x < 5 * data['XLEN']/10 and event.y < data['YLEN']/3:
         print('Top row, 3rd collumn')
-    elif event.x > 5 * data['XLEN']/10 and event.y > data['YLEN']/6:
+    elif event.x > 5 * data['XLEN']/10 and event.y > data['YLEN']/6 and event.x < 6 * data['XLEN']/10 and event.y < data['YLEN']/3:
         print('Top row, 4th collumn')
-    elif event.x > 6 * data['XLEN']/10 and event.y > data['YLEN']/6:
+    elif event.x > 6 * data['XLEN']/10 and event.y > data['YLEN']/6 and event.x < 7 * data['XLEN']/10 and event.y < data['YLEN']/3:
         print('Top row, 5th collumn')
-    elif event.x > 7 * data['XLEN']/10 and event.y > data['YLEN']/6:
+    elif event.x > 7 * data['XLEN']/10 and event.y > data['YLEN']/6 and event.x < 8 * data['XLEN']/10 and event.y < data['YLEN']/3:
         print('Top row, 6th collumn')
-    elif event.x > 2 * data['XLEN']/10 +0.01*data['XLEN'] and event.y > data['YLEN']/1.75:
+    elif event.x > 2 * data['XLEN']/10 +0.01*data['XLEN'] and event.y > data['YLEN']/1.75 and event.x < 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y < data['YLEN']/1.25:
         print('Bottom row, 1st collumn')
-    elif event.x > 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y > data['YLEN']/1.75:
+    elif event.x > 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y > data['YLEN']/1.75 and event.x < 4 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
         print('Bottom row, 2nd collumn')
-    elif event.x > 4 * data['XLEN']/10 and event.y > data['YLEN']/1.75:
+    elif event.x > 4 * data['XLEN']/10 and event.y > data['YLEN']/1.75 and event.x < 5 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
         print('Bottom row, 3rd collumn')
-    elif event.x > 5 * data['XLEN']/10 and event.y > data['YLEN']/1.75:
+    elif event.x > 5 * data['XLEN']/10 and event.y > data['YLEN']/1.75 and event.x < 6 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
         print('Bottom row, 4th collumn')
-    elif event.x > 6 * data['XLEN']/10 and event.y > data['YLEN']/1.75:
+    elif event.x > 6 * data['XLEN']/10 and event.y > data['YLEN']/1.75 and event.x < 7 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
         print('Bottom row, 5th collumn')
-    elif event.x > 7 * data['XLEN']/10 and event.y > data['YLEN']/1.75:
+    elif event.x > 7 * data['XLEN']/10 and event.y > data['YLEN']/1.75 and event.x < 8 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
         print('Bottom row, 6th collumn')
 
 
@@ -173,5 +200,6 @@ if __name__ == '__main__':
     #matrix = [[4,4,2,4,7,4],[4,4,0,4,2,4]]
     #stores = [0,6]
     drawPieces()
+    App().listenMouseEvent('click',mouseClick)
     App().run()
 
