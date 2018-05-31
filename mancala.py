@@ -141,7 +141,7 @@ def movePieces(row,collumn):
     if quan > 0:
         data['matrix'][row-1][collumn-1] = 0
         for i in range(quan-1,0,-1):
-            if data['matrix'][collumn-i] == 6:
+            if data['matrix'][collumn-i] == -1:
                 data['stores'][row-1] += 1
                 drawPieces()
             else:
