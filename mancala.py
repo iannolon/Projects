@@ -140,14 +140,16 @@ def movePieces(row,collumn):
     quan = data['matrix'][row-1][collumn-1]
     if quan > 0:
         data['matrix'][row-1][collumn-2] = 0
+        i = quan
         while i > 0:
-        #for i in range(quan,0,-1):
-            if data['matrix'][collumn-i] == :
-                data['stores'][row-1] += 1
-                drawPieces()
-            else:
-                data['matrix'][row-1][collumn-i-2] += 1
-                drawPieces()
+            #if data['matrix'][collumn-i] == :
+                #data['stores'][row-1] += 1
+                #drawPieces()
+                #i -= 1
+            #else:
+            data['matrix'][row-1][collumn-i-2] += 1
+            drawPieces()
+            i -= 1
     
 
 def gameOver():
