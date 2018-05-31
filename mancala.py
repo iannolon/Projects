@@ -133,11 +133,12 @@ def drawPieces():
             else:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/50+data['XLEN']/1.35,data['YLEN']/3))
     
-'''
+
 def movePieces(row,collumn):
-    #do i need to add the stores into the main matrix
+    print(row,'row',collumn,'collumn')
     
-'''
+    
+
 def gameOver():
     if data['matrix'][0] == [0,0,0,0,0,0]:
         print('Top player won!')
@@ -150,45 +151,30 @@ def gameOver():
     
 
 def mouseClick(event):
-    '''
-    if event.x > and event.y >
-    2 * data['XLEN']/10 +0.01*data['XLEN'],data['YLEN']/6
-    3 * data['XLEN']/10 +0.005*data['XLEN'],data['YLEN']/6
-    4 * data['XLEN']/10,data['YLEN']/6
-    5 * data['XLEN']/10,data['YLEN']/6
-    6 * data['XLEN']/10,data['YLEN']/6
-    7 * data['XLEN']/10,data['YLEN']/6
-    2 * data['XLEN']/10 +0.01*data['XLEN'],data['YLEN']/1.75
-    3 * data['XLEN']/10 +0.005*data['XLEN'],data['YLEN']/1.75
-    4 * data['XLEN']/10,data['YLEN']/1.75
-    5 * data['XLEN']/10,data['YLEN']/1.75
-    6 * data['XLEN']/10,data['YLEN']/1.75
-    7 * data['XLEN']/10,data['YLEN']/1.75
-    '''
     if event.x > 2 * data['XLEN']/10 +0.01*data['XLEN'] and event.y > data['YLEN']/6 and event.x < 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y < data['YLEN']/2.5:
-        print('Top row, 1st collumn')
+        movePieces(1,1)
     elif event.x > 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y > data['YLEN']/6 and event.x < 4 * data['XLEN']/10 and event.y < data['YLEN']/2.5:
-        print('Top row, 2nd collumn')
+        movePieces(1,2)
     elif event.x > 4 * data['XLEN']/10 and event.y > data['YLEN']/6 and event.x < 5 * data['XLEN']/10 and event.y < data['YLEN']/2.5:
-        print('Top row, 3rd collumn')
+        movePieces(1,3)
     elif event.x > 5 * data['XLEN']/10 and event.y > data['YLEN']/6 and event.x < 6 * data['XLEN']/10 and event.y < data['YLEN']/2.5:
-        print('Top row, 4th collumn')
+        movePieces(1,4)
     elif event.x > 6 * data['XLEN']/10 and event.y > data['YLEN']/6 and event.x < 7 * data['XLEN']/10 and event.y < data['YLEN']/2.5:
-        print('Top row, 5th collumn')
+        movePieces(1,5)
     elif event.x > 7 * data['XLEN']/10 and event.y > data['YLEN']/6 and event.x < 8 * data['XLEN']/10 and event.y < data['YLEN']/2.5:
-        print('Top row, 6th collumn')
+        movePieces(1,6)
     elif event.x > 2 * data['XLEN']/10 +0.01*data['XLEN'] and event.y > data['YLEN']/1.75 and event.x < 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y < data['YLEN']/1.25:
-        print('Bottom row, 1st collumn')
+        movePieces(2,1)
     elif event.x > 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y > data['YLEN']/1.75 and event.x < 4 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
-        print('Bottom row, 2nd collumn')
+        movePieces(2,2)
     elif event.x > 4 * data['XLEN']/10 and event.y > data['YLEN']/1.75 and event.x < 5 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
-        print('Bottom row, 3rd collumn')
+        movePieces(2,3)
     elif event.x > 5 * data['XLEN']/10 and event.y > data['YLEN']/1.75 and event.x < 6 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
-        print('Bottom row, 4th collumn')
+        movePieces(2,4)
     elif event.x > 6 * data['XLEN']/10 and event.y > data['YLEN']/1.75 and event.x < 7 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
-        print('Bottom row, 5th collumn')
+        movePieces(2,5)
     elif event.x > 7 * data['XLEN']/10 and event.y > data['YLEN']/1.75 and event.x < 8 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
-        print('Bottom row, 6th collumn')
+        movePieces(2,6)
 
 
 if __name__ == '__main__':
