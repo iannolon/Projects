@@ -1,6 +1,7 @@
 #IanNolon
 #5/23/18
 #mancala.py
+#add comments
 
 from ggame import *
 
@@ -136,7 +137,14 @@ def drawPieces():
 
 def movePieces(row,collumn):
     print(row,'row',collumn,'collumn')
-    
+    quan = data['matrix'][row-1][collumn-1]
+    if quan > 0:
+        data['matrix'][row-1][collumn-1] = 0
+        for i in range(quan-1,0,-1):
+            if data['matrix'][collumn-i] == 6:
+                data['stores'][row-1] += 1
+            else:
+                data['matrix'][row-i][collumn-i] += 1
     
 
 def gameOver():
