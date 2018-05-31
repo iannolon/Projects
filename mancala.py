@@ -143,8 +143,10 @@ def movePieces(row,collumn):
         for i in range(quan-1,0,-1):
             if data['matrix'][collumn-i] == 6:
                 data['stores'][row-1] += 1
+                drawPieces()
             else:
                 data['matrix'][row-i][collumn-i] += 1
+                drawPieces()
     
 
 def gameOver():
