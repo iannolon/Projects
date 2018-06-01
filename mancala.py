@@ -138,20 +138,37 @@ def drawPieces():
     
 #This moves the pieces how they should be moved. When a house is clicked, its number becomes zero and all of the houses to the left of it go up by one for how many pieces were in the clicked house
 def movePieces(row,collumn):
-    print(row,'row',collumn,'collumn')
+    #print(row,'row',collumn,'collumn')
     quan = data['matrix'][row-1][collumn-1]
-    if quan > 0:
-        data['matrix'][row-1][collumn-2] = 0
-        i = quan
-        while i > 0:
-            #if data['matrix'][collumn-i] == :
-                #data['stores'][row-1] += 1
-                #drawPieces()
-                #i -= 1
-            #else:
-            data['matrix'][row-1][collumn-i-2] += 1
-            drawPieces()
-            i -= 1
+    if data['turn'] == 1:
+        if row == 1:
+            if quan > 0:
+                data['matrix'][row-1][collumn-2] = 0
+                i = quan
+                while i > 0:
+                    if collumn - i == 0:
+                        data['stores'][row-1] += 1
+                        drawPieces()
+                        i -= 1
+                    else:
+                        data['matrix'][row-1][collumn-i-2] += 1
+                        drawPieces()
+                        i -= 1
+        else:
+            print('no')
+    elif data['turn'] == 2:
+        if quan > 0:
+            data['matrix'][row-1][collumn-2] = 0
+            i = quan
+            while i > 0:
+                if collumn - i == 0:
+                    data['stores'][row-1] += 1
+                    drawPieces()
+                    i -= 1
+                else:
+                    data['matrix'][row-1][collumn-i-2] += 1
+                    drawPieces()
+                    i -= 1
             
             
 #This determines if the game is over or not by seeing if one of the rows is empty or not and it returns who won along with a Boolean
@@ -197,6 +214,7 @@ if __name__ == '__main__':
     data = {} #set up dictionary
     data['XLEN'] = 975 #975 looks nice
     data['YLEN'] = data['XLEN'] * 7/18 #To make the proportions the same
+    data['turn'] = 1 #turn 1 is person on top, turn 2 is person on bottom
     fillBuckets()
     redrawAll()
     drawPieces()
