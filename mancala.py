@@ -1,16 +1,17 @@
 #IanNolon
 #5/23/18
 #mancala.py
-#add comments
 
 from ggame import *
 
+#This makes the buckets the way they are at the beginning of the game, before anybody has taken any moves.
 def fillBuckets():
     data['matrix'] = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
     data['stores'] = [0,0]
 
+#This sets up the board with the starting configuration and sprites all the graphics.
 def redrawAll():
-    for item in App().spritelist[:]:
+    for item in App().spritelist[:]: #this deletes all the previous graphics so that numbers are not sprited on top of each other.
         item.destroy()
     
     #fillBuckets()
@@ -25,6 +26,7 @@ def redrawAll():
     blackOutline = LineStyle(1,black)
     tanOutline = LineStyle(1,tan)
     
+    #sprites board graphics
     board = RectangleAsset(data['XLEN'],data['YLEN'],blackOutline,tan)
     store = RectangleAsset(data['XLEN']/7,data['YLEN']/1.5,blackOutline,yellow)
     house = CircleAsset(data['XLEN']/25,blackOutline,blue) 
@@ -43,7 +45,7 @@ def redrawAll():
     Sprite(house,(5 * data['XLEN']/10,data['YLEN']/1.75))
     Sprite(house,(6 * data['XLEN']/10,data['YLEN']/1.75))
     Sprite(house,(7 * data['XLEN']/10,data['YLEN']/1.75))
-    for r in range(0,6):
+    for r in range(0,6): #sprites the numbers that represent how many stones are in each house
         for c in range(0,2):
             houNum = TextAsset(str(data['matrix'][c][r-1]), fill = black, style = 'bold 50pt Times') #the font size does not change when the XLEN constant changes.
             if c == 0: #sprites first collumn
