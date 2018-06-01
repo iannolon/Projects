@@ -75,7 +75,7 @@ def redrawAll():
             else:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/50+data['XLEN']/1.35,data['YLEN']/3))
     
-
+#This sprites all of the graphics, but with updated numbers. The code for much of it is very similar to redrawAll
 def drawPieces():
     for item in App().spritelist[:]:
         item.destroy()
@@ -136,7 +136,7 @@ def drawPieces():
             else:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/50+data['XLEN']/1.35,data['YLEN']/3))
     
-
+#This moves the pieces how they should be moved. When a house is clicked, its number becomes zero and all of the houses to the left of it go up by one for how many pieces were in the clicked house
 def movePieces(row,collumn):
     print(row,'row',collumn,'collumn')
     quan = data['matrix'][row-1][collumn-1]
@@ -152,8 +152,9 @@ def movePieces(row,collumn):
             data['matrix'][row-1][collumn-i-2] += 1
             drawPieces()
             i -= 1
-    
-
+            
+            
+#This determines if the game is over or not by seeing if one of the rows is empty or not and it returns who won along with a Boolean
 def gameOver():
     if data['matrix'][0] == [0,0,0,0,0,0]:
         print('Top player won!')
@@ -163,8 +164,8 @@ def gameOver():
         return True
     else:
         return False
-    
 
+#This determines which house you clicked and sends that information by calling the movePieces function with the correct row and collumn
 def mouseClick(event):
     if event.x > 2 * data['XLEN']/10 +0.01*data['XLEN'] and event.y > data['YLEN']/6 and event.x < 3 * data['XLEN']/10 +0.005*data['XLEN'] and event.y < data['YLEN']/2.5:
         movePieces(1,1)
@@ -191,15 +192,13 @@ def mouseClick(event):
     elif event.x > 7 * data['XLEN']/10 and event.y > data['YLEN']/1.75 and event.x < 8 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
         movePieces(2,6)
 
-
+#The rest of the code is stored here
 if __name__ == '__main__':
-    data = {}
+    data = {} #set up dictionary
     data['XLEN'] = 975 #975 looks nice
     data['YLEN'] = data['XLEN'] * 7/18 #To make the proportions the same
     fillBuckets()
     redrawAll()
-    #matrix = [[4,4,2,4,7,4],[4,4,0,4,2,4]]
-    #stores = [0,6]
     drawPieces()
     App().listenMouseEvent('click',mouseClick)
     App().run()
