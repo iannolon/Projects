@@ -150,6 +150,10 @@ def movePieces(row,collumn):
                         data['stores'][row-1] += 1
                         drawPieces()
                         i -= 1
+                        while i > 0:
+                            data['matrix'][row][i-1] += 1
+                            drawPieces()
+                            i -= 1
                     else:
                         data['matrix'][row-1][collumn-i-2] += 1
                         drawPieces()
