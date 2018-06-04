@@ -200,11 +200,18 @@ if __name__ == '__main__':
     
     board = RectangleAsset(400,270,blackOutline,white)
     snText = TextAsset(('SNAKE'), fill = black, style = 'bold 50pt Times')
+    manText = TextAsset(('MANCALA'), fill = black, style = 'bold 50pt Times')
+    btshText = TextAsset(('BATTLESHIP'), fill = black, style = 'bold 50pt Times')
+    dtbxText = TextAsset(('DOTS AND BOXES'), fill = black, style = 'bold 50pt Times')
     
     Sprite(board)
     Sprite(board,(400,0))
     Sprite(board,(0,270))
     Sprite(board,(400,270))
+    Sprite(snText,(50,50))
+    Sprite(manText,(450,50))
+    Sprite(btshText,(0, 300))
+    Sprite(dtbxText,(450,300))
     App().listenMouseEvent('click',mouseClick)
     App().run()
     
