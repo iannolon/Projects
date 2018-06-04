@@ -138,28 +138,25 @@ def drawPieces():
     
 #This moves the pieces how they should be moved. When a house is clicked, its number becomes zero and all of the houses to the left of it go up by one for how many pieces were in the clicked house
 def movePieces(row,collumn):
-    #print(row,'row',collumn,'collumn')
+    print(row-1,'row',collumn-1,'collumn')
     quan = data['matrix'][row-1][collumn-1]
+    data['matrix'][row-1][collumn-1] = 0
     if data['turn'] == 1:
         if row == 1:
-            if quan > 0:
-                data['matrix'][row-1][collumn-2] = 0
-                i = quan
-                while i > 0:
-                    if collumn - i == 0:
-                        data['stores'][row-1] += 1
-                        drawPieces()
-                        i -= 1
-                        while i > 0:
-                            data['matrix'][row][i-1] += 1
-                            drawPieces()
-                            i -= 1
-                    else:
-                        data['matrix'][row-1][collumn-i-2] += 1
-                        drawPieces()
-                        i -= 1
-        else:
-            print('no')
+            i = collumn-2
+            while quan > 0:
+                if i == 0:
+                    data['stores'][row-1] += 1
+                    i = 0
+                    quan -= 1
+                    while quan > 0:
+                        data['matrix'][row][i] += 1
+                        i += 1
+                        quan -= 1
+                else:
+                    data['matrix'][row-1][i] += 1
+                    i -= 1
+                    quan -= 1
     elif data['turn'] == 2:
         if quan > 0:
             data['matrix'][row-1][collumn-2] = 0
@@ -173,7 +170,9 @@ def movePieces(row,collumn):
                     data['matrix'][row-1][collumn-i-2] += 1
                     drawPieces()
                     i -= 1
-            
+    drawPieces()
+    print(data['matrix'])
+
             
 #This determines if the game is over or not by seeing if one of the rows is empty or not and it returns who won along with a Boolean
 def gameOver():
@@ -224,4 +223,3 @@ if __name__ == '__main__':
     drawPieces()
     App().listenMouseEvent('click',mouseClick)
     App().run()
-
