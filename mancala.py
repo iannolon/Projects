@@ -17,6 +17,7 @@ def redrawAll():
     #fillBuckets()
     data['matrix'] = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
     data['stores'] = [0,0]
+    data['turn'] = 1
     
     black = Color(0x000000,1)
     tan = Color(0xE3E385,1)
@@ -140,12 +141,12 @@ def drawPieces():
 def movePieces(row,collumn):
     #print(row-1,'row',collumn-1,'collumn')
     quan = data['matrix'][row-1][collumn-1]
-    data['matrix'][row-1][collumn-1] = 0
     if data['turn'] == 1:
         if row == 1:
+            data['matrix'][row-1][collumn-1] = 0
             i = collumn-2
             while quan > 0:
-                if i == 0:
+                if i < 0:
                     data['stores'][row-1] += 1
                     i = 0
                     quan -= 1
@@ -157,11 +158,13 @@ def movePieces(row,collumn):
                     data['matrix'][row-1][i] += 1
                     i -= 1
                     quan -= 1
+        data['turn'] = 2
     elif data['turn'] == 2:
         if row == 2:
+            data['matrix'][row-1][collumn-1] = 0
             i = collumn-2
             while quan > 0:
-                if i == 0:
+                if i > 6:
                     data['stores'][row-1] += 1
                     i = 0
                     quan -= 1
@@ -173,6 +176,7 @@ def movePieces(row,collumn):
                     data['matrix'][row-1][i] += 1
                     i -= 1
                     quan -= 1
+        data['turn'] = 2
     drawPieces()
     #print(data['matrix'])
 
