@@ -165,12 +165,12 @@ def movePieces(row,collumn):
             i = collumn-2
             while quan > 0:
                 if i > 6:
-                    data['stores'][row-1] += 1
+                    data['stores'][row][i] += 1
                     i = 0
                     quan -= 1
                     while quan > 0:
                         data['matrix'][row][i] += 1
-                        i += 1
+                        i -= 1
                         quan -= 1
                 else:
                     data['matrix'][row-1][i] += 1
