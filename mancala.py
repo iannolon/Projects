@@ -158,7 +158,7 @@ def movePieces(row,collumn):
                     i -= 1
                     quan -= 1
     elif data['turn'] == 2:
-        if row == 1:
+        if row == 2:
             i = collumn-2
             while quan > 0:
                 if i == 0:
