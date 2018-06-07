@@ -142,8 +142,8 @@ def movePieces(row,collumn):
     #print(row-1,'row',collumn-1,'collumn')
     quan = data['matrix'][row-1][collumn-1]
     if data['turn'] == 1:
+        data['matrix'][row-1][collumn-1] = 0
         if row == 1:
-            data['matrix'][row-1][collumn-1] = 0
             i = collumn-2
             while quan > 0:
                 if i < 0:
@@ -160,8 +160,8 @@ def movePieces(row,collumn):
                     quan -= 1
         data['turn'] = 2
     elif data['turn'] == 2:
+        data['matrix'][row-1][collumn-1] = 0
         if row == 2:
-            data['matrix'][row-1][collumn-1] = 0
             i = collumn-2
             while quan > 0:
                 if i > 6:
