@@ -108,7 +108,7 @@ def drawPieces():
     Sprite(house,(7 * data['XLEN']/10,data['YLEN']/1.75))
     for r in range(0,6):
         for c in range(0,2):
-            houNum = TextAsset(str(data['matrix'][c][r-1]), fill = black, style = 'bold 50pt Times') #the font size does not change when the XLEN constant changes.
+            houNum = TextAsset(str(data['matrix'][c][r]), fill = black, style = 'bold 50pt Times') #the font size does not change when the XLEN constant changes.
             if c == 0: #sprites first collumn
                 if r == 0:
                     Sprite(houNum,((2+r)*data['XLEN']/10+data['XLEN']/50+data['XLEN']*0.01,data['YLEN']/6))
