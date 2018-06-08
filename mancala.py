@@ -92,6 +92,10 @@ def drawPieces():
     board = RectangleAsset(data['XLEN'],data['YLEN'],blackOutline,tan)
     store = RectangleAsset(data['XLEN']/7,data['YLEN']/1.5,blackOutline,yellow)
     house = CircleAsset(data['XLEN']/25,blackOutline,blue) 
+    if data['turn'] == 1:
+        turntxt = TextAsset('Top player\'s turn', fill = black, style = 'bold 30pt Times')
+    elif data['turn'] == 2:
+        turntxt = TextAsset('Bottom player\'s turn', fill = black, style = 'bold 30pt Times')
     Sprite(board)
     Sprite(store,(data['XLEN']/18,data['YLEN']/6))
     Sprite(store,(data['XLEN']/18+data['XLEN']/1.35,data['YLEN']/6))
@@ -136,6 +140,7 @@ def drawPieces():
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/25+data['XLEN']/1.35,data['YLEN']/3))
             else:
                 Sprite(stoNum,(data['XLEN']/18+data['XLEN']/50+data['XLEN']/1.35,data['YLEN']/3))
+    Sprite(turntxt,(data['XLEN']-data['XLEN']/7,data['YLEN']))
     
 #This moves the pieces how they should be moved. When a house is clicked, its number becomes zero and all of the houses to the left of it go up by one for how many pieces were in the clicked house
 def movePieces(row,collumn):
@@ -176,7 +181,7 @@ def movePieces(row,collumn):
                     data['matrix'][row-1][i] += 1
                     i -= 1
                     quan -= 1
-        data['turn'] = 2
+        data['turn'] = 1
     drawPieces()
     #print(data['matrix'])
 
