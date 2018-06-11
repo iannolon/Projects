@@ -229,6 +229,8 @@ def mouseClick(event):
             movePieces(2,5)
         elif event.x > 7 * data['XLEN']/10 and event.y > data['YLEN']/1.75 and event.x < 8 * data['XLEN']/10 and event.y < data['YLEN']/1.25:
             movePieces(2,6)
+    else:
+        gameOver()
 
 #The rest of the code is stored here
 if __name__ == '__main__':
