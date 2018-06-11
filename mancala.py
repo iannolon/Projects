@@ -144,6 +144,7 @@ def drawPieces():
     
 #This moves the pieces how they should be moved. When a house is clicked, its number becomes zero and all of the houses to the left of it go up by one for how many pieces were in the clicked house
 def movePieces(row,collumn):
+    goAgain = False
     #print(row-1,'row',collumn-1,'collumn')
     quan = data['matrix'][row-1][collumn-1]
     if data['turn'] == 1:
@@ -156,6 +157,8 @@ def movePieces(row,collumn):
                         data['stores'][row-1] += 1
                         i = 0
                         quan -= 1
+                        if quan == 0:
+                            goAgain = True
                         while quan > 0:
                             data['matrix'][row][i] += 1
                             i += 1
@@ -164,10 +167,10 @@ def movePieces(row,collumn):
                         data['matrix'][row-1][i] += 1
                         i -= 1
                         quan -= 1
-            if data['matrix'][row-1][collumn-1] == collumn - 1:
-                data['turn'] = 1
-            else:
+            if goAgain == False:
                 data['turn'] = 2
+            else:
+                data['turn'] = 1
     elif data['turn'] == 2:
         if row != 1:
             data['matrix'][row-1][collumn-1] = 0
@@ -178,6 +181,8 @@ def movePieces(row,collumn):
                         data['stores'][row-1] += 1
                         i = 0
                         quan -= 1
+                        if quan == 0:
+                            goAgain = True
                         while quan > -1:
                             data['matrix'][row-2][i] += 1
                             i -= 1
@@ -186,7 +191,10 @@ def movePieces(row,collumn):
                         data['matrix'][row-1][i] += 1
                         i += 1
                         quan -= 1
-            data['turn'] = 1
+            if goAgain == False:
+                data['turn'] = 1
+            else:
+                data['turn'] = 2
     drawPieces()
     #print(data['matrix'])
 
