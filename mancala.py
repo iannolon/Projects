@@ -172,19 +172,19 @@ def movePieces(row,collumn):
         if row != 1:
             data['matrix'][row-1][collumn-1] = 0
             if row == 2:
-                i = collumn-2
+                i = collumn
                 while quan > 0:
-                    if i > 6:
-                        data['stores'][row][i] += 1
+                    if i == 6:
+                        data['stores'][row-1] += 1
                         i = 0
                         quan -= 1
                         while quan > 0:
-                            data['matrix'][row][i] += 1
-                            i -= 1
+                            data['matrix'][row-1][i] += 1
+                            i += 1
                             quan -= 1
                     else:
                         data['matrix'][row-1][i] += 1
-                        i -= 1
+                        i += 1
                         quan -= 1
             data['turn'] = 1
     drawPieces()
