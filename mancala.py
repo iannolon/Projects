@@ -194,10 +194,10 @@ def movePieces(row,collumn):
 #This determines if the game is over or not by seeing if one of the rows is empty or not and it returns who won along with a Boolean
 def gameOver():
     if data['matrix'][0] == [0,0,0,0,0,0]:
-        print('Top player won!')
+        print('Top player wins!')
         return True
     elif data['matrix'][1] == [0,0,0,0,0,0]:
-        print('Bottom player won!')
+        print('Bottom player wins!')
         return True
     else:
         return False
