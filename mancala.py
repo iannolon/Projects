@@ -178,9 +178,9 @@ def movePieces(row,collumn):
                         data['stores'][row-1] += 1
                         i = 0
                         quan -= 1
-                        while quan > 0:
+                        while quan > -1:
                             data['matrix'][row-2][i] += 1
-                            i += 1
+                            i -= 1
                             quan -= 1
                     else:
                         data['matrix'][row-1][i] += 1
