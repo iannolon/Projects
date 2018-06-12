@@ -15,6 +15,7 @@ def redrawAll():
         item.destroy()
     
     #fillBuckets()
+    #data['matrix'] = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
     data['matrix'] = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
     data['stores'] = [0,0]
     data['turn'] = 1
@@ -202,12 +203,12 @@ def movePieces(row,collumn):
 #This determines if the game is over or not by seeing if one of the rows is empty or not and it returns who won along with a Boolean
 def gameOver():
     if data['matrix'][0] == [0,0,0,0,0,0]:
-        topVText = TextAsset('Top player wins!', fill = black, style = 'bold 50pt Times')
-        Sprite(topVtext,(data['XLEN']-data['XLEN']/3,data['YLEN'])
+        topVtext = TextAsset('Top player wins!', fill = black, style = 'bold 50pt Times')
+        Sprite(topVtext,(data['XLEN']-data['XLEN']/1.8,data['YLEN']-data['YLEN']/4))
         return True
     elif data['matrix'][1] == [0,0,0,0,0,0]:
-        botVText = TextAsset('Bottom player wins!', fill = black, style = 'bold 50pt Times')
-        Sprite(botVtext,(data['XLEN']-data['XLEN']/3,data['YLEN'])
+        botVtext = TextAsset('Bottom player wins!', fill = black, style = 'bold 50pt Times')
+        Sprite(botVtext,(data['XLEN']-data['XLEN']/1.8,data['YLEN']-data['YLEN']/4))
         return True
     else:
         return False
