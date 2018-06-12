@@ -179,7 +179,7 @@ def movePieces(row,collumn):
                 while quan > 0:
                     if i == 6:
                         data['stores'][row-1] += 1
-                        i = 0
+                        i = 5
                         quan -= 1
                         if quan == 0:
                             goAgain = True
@@ -202,10 +202,12 @@ def movePieces(row,collumn):
 #This determines if the game is over or not by seeing if one of the rows is empty or not and it returns who won along with a Boolean
 def gameOver():
     if data['matrix'][0] == [0,0,0,0,0,0]:
-        print('Top player wins!')
+        topVText = TextAsset('Top player wins!', fill = black, style = 'bold 50pt Times')
+        Sprite(topVtext,(data['XLEN']-data['XLEN']/3,data['YLEN'])
         return True
     elif data['matrix'][1] == [0,0,0,0,0,0]:
-        print('Bottom player wins!')
+        botVText = TextAsset('Bottom player wins!', fill = black, style = 'bold 50pt Times')
+        Sprite(botVtext,(data['XLEN']-data['XLEN']/3,data['YLEN'])
         return True
     else:
         return False
