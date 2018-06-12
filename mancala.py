@@ -15,7 +15,6 @@ def redrawAll():
         item.destroy()
     
     #fillBuckets()
-    #data['matrix'] = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
     data['matrix'] = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
     data['stores'] = [0,0]
     data['turn'] = 1
@@ -144,6 +143,7 @@ def drawPieces():
     Sprite(turntxt,(data['XLEN']-data['XLEN']/7,data['YLEN']))
     
 #This moves the pieces how they should be moved. When a house is clicked, its number becomes zero and all of the houses to the left of it go up by one for how many pieces were in the clicked house
+#Basically, this code is what makes the game run. It has the rules for moving mancala in it. 
 def movePieces(row,collumn):
     goAgain = False
     #print(row-1,'row',collumn-1,'collumn')
